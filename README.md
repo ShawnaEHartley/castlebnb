@@ -1,24 +1,6 @@
-# README
+## CastleBnB
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to CastleBnB. This is a clone of AirBnB which features only castle listings around the world.
+</br>
+Find your next fairytale adventure here.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
