@@ -1,4 +1,4 @@
-## CastleBnB
+## castlebnb
 
 Welcome to CastleBnB. This is a clone of AirBnB which features only castle listings around the world.
 </br>
