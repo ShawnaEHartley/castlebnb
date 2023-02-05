@@ -4,7 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  email           :string           not null
-#  username        :string           not null
+#  full_name       :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  created_at      :datetime         not null
@@ -15,10 +15,9 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
-  validates :username, 
-    uniqueness: true, 
-    length: { in: 3..30 },
-    format: { without: URI::MailTo::EMAIL_REGEXP, message: 'Username cannot be an email address' }
+  validates :full_name, 
+    length: { in: 3..50 },
+    format: { without: URI::MailTo::EMAIL_REGEXP, message: 'Cannot be an email address' }
   validates :email, 
     uniqueness: true, 
     length: { in: 3..255 }, 
@@ -26,8 +25,15 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..255 }, allow_nil: true
   validates :session_token, presence: true, uniqueness: true
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
+  attr_reader :password
+
+  def password=(new_pw)
+      @password = new_pw
+      self.password_digest = BCrypt::Password.create(new_pw)
+  end
+  
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email)
 
     if user&.authenticate(password)
       return user
