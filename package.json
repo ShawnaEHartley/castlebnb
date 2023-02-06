@@ -1,0 +1,26 @@
+{
+  "name": "castlebnb",
+  "version": "1.0.0",
+  "description": "Welcome to CastleBnB. This is a clone of AirBnB which features only castle listings around the world. </br> Find your next fairytale adventure here.",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShawnaEHartley/CastleBnB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShawnaEHartley/CastleBnB/issues"
+  },
+  "homepage": "https://github.com/ShawnaEHartley/CastleBnB#readme",
+
+  "engines": {
+    "node": "16.x"
+  }
+}

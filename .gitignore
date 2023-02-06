@@ -27,3 +27,11 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/frontend/node_modules
+.byebug_history
+.DS_Store
+/public
+
+
+
