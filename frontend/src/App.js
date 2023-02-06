@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import SignUp from './components/SignUp';
-import Login from './components/LogIn';
+import HomePage from './components/HomePage/HomePage';
+import SignUp from './components/SignUpPage/SignUpPage';
+import Login from './components/LoginFormPage/LoginFormPage';
 
 function App() {
   return (

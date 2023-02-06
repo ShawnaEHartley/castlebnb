@@ -6,6 +6,12 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+div {
+  border: black;
+  border-width: 2px;
+  border-style: solid;
+}
+
 #header {
   display: flex;
   justify-content: space-between;
@@ -22,5 +28,4 @@ body {
 
 #header_left span {
   padding-left: 5px;
-}
-
+} 

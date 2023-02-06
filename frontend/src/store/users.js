@@ -11,7 +11,6 @@ const receiveUser = (user) => {
 export const createUser = (user) => async(dispatch) => {
   const res = await csrfFetch('/api/users', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(user)
   })
 
@@ -24,7 +23,6 @@ export const createUser = (user) => async(dispatch) => {
 export const signInUser = (user) => async(dispatch) => {
   const res = await csrfFetch('api/sessions', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(user)
   })
 

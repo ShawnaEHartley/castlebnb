@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createUser } from "../store/users";
+import { createUser } from "../../store/users";
 
 function SignUp() {
   const [full_name, setFullName] = useState("");
