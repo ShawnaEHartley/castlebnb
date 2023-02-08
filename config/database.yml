@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: castlebnb_production
-  username: castlebnb
-  password: <%= ENV["CASTLEBNB_DATABASE_PASSWORD"] %>
+  url: <%= ENV["CASTLEBNB_DATABASE_URL"] %>

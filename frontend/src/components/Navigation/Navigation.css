@@ -1,0 +1,18 @@
+#profiledrop {
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background-color: #ccc;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+}
+
+.profileDropItem {
+  padding: 5px 0px 5px 10px;
+  cursor: pointer;
+}
