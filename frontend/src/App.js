@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
-import SignUpPage from './components/UserAuthModal/SignUpPage/SignUpPage';
-import LoginFormPage from './components/UserAuthModal/LoginFormPage/LoginFormPage';
+import SignUpPage from './components/UserAuthModal/SignUpPage';
+import LoginFormPage from './components/UserAuthModal/LoginFormPage';
 import Navigation from './components/Navigation/Navigation'
 
 function App() {

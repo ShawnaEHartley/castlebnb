@@ -18,6 +18,7 @@ export const createUser = (user) => async(dispatch) => {
     const user = await res.json();
     dispatch(receiveUser(user))
   }
+  return res;
 };
 
 export const signInUser = (user) => async(dispatch) => {

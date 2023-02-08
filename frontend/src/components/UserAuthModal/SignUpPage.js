@@ -1,20 +1,21 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { createUser } from "../../../store/users";
-import * as sessionActions from '../../../store/session';
+import React, { startTransition, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from 'react-router-dom';
+import { createUser } from "../../store/users";
+import * as sessionActions from '../../store/session';
 
-
-import './SignUpPage.css'
+import './UserAuth.css'
 
 function SignUpPage(props) {
+  const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
   const [first_name, setFirstName] =useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  
-  const dispatch = useDispatch();
+  if (sessionUser) return <Redirect to="/" />
 
 
   const handleSubmit = (e) => {
@@ -22,6 +23,7 @@ function SignUpPage(props) {
     const full_name = `${first_name} ${last_name}`;
     const user = {full_name, email, password};
     dispatch(createUser(user))
+    .catch()
   }
 
   const handleDemoSubmit = (e) => {
@@ -40,10 +42,9 @@ function SignUpPage(props) {
       else setErrors([res.statusText]);
     });
   }
-  
 
   return (
-    <section className='userauth-section'>
+    <div className='userauth-section'>
       <div className='userauth-header'>
         <div className='user-auth-back-arrow' onClick={props.onArrowClick}></div>
         <div>
@@ -52,15 +53,14 @@ function SignUpPage(props) {
         <div className='user-auth-empty'></div>
       </div>
       <div className='user-auth-body'>
-        <div className='user-auth-pane'>
           <form className='user-auth-form' onSubmit={handleSubmit}>
             <div className='full-name-box'>
               {/* <label id='signup_label'>Full Name</label> */}
-              <input className='user-auth-input' type="text"  placeholder='First Name' value={first_name} onChange={(e) => {
+              <input id='first-name' className='user-auth-input' type="text"  placeholder='First name' value={first_name} onChange={(e) => {
                 e.preventDefault();
                 setFirstName(e.target.value)
               }} />
-              <input className='user-auth-input' type="text"  placeholder='Last Name' value={last_name} onChange={(e) => {
+              <input id='last-name' className='user-auth-input' type="text"  placeholder='Last name' value={last_name} onChange={(e) => {
                 e.preventDefault();
                 setLastName(e.target.value)
               }} />
@@ -91,8 +91,7 @@ function SignUpPage(props) {
             <button className="user-auth-button" onClick={handleDemoSubmit}>Demo user</button>
           </form>
         </div>
-      </div>
-    </section>
+    </div>
   )
 };
 

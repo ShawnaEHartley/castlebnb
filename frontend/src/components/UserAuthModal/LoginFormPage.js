@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import * as sessionActions from '../../../store/session';
+import { Redirect } from "react-router-dom";
+import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom'
-import './LoginForm.css'
+import './UserAuth.css';
 
 
 function LoginFormPage(props) {
@@ -31,8 +31,10 @@ function LoginFormPage(props) {
       else if (data) setErrors([data]);
       else setErrors([res.statusText]);
     });
+
   }
 
+  console.log(errors)
   return (
     <section className='userauth-section'>
       <div className='userauth-header'>
@@ -58,6 +60,9 @@ function LoginFormPage(props) {
                 e.preventDefault();
                 setPassword(e.target.value)
               }} />
+            </div>
+            <div className='user-auth-error'>
+              {errors.map(error => <span key={error}>Let's try that again. Invalid login credentials. Please try again.</span>)}
             </div>
             <button className='user-auth-button' type="submit">Log In</button>
           </form>
