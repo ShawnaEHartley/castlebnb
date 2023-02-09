@@ -35,7 +35,6 @@ function LoginFormPage(props) {
   }
 
   const errorPane = () => {
-    console.log('I am in the error function')
     return (
       <div id='logInError' className='user-auth-error'>
         <img id='ErrorImg' src={alert} alt="error alert" />
@@ -47,7 +46,6 @@ function LoginFormPage(props) {
     )
   };
 
-  console.log(errors)
   return (
     <section className='userauth-section'>
       <div className='userauth-header'>

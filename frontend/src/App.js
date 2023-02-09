@@ -1,15 +1,15 @@
 import { Route, Switch } from 'react-router-dom';
-import HomePage from './components/HomePage/HomePage';
+import NavBar from './components/NavBar/NavBar';
+import SplashPage from './components/SplashPage/SplashPage.js';
 import SignUpPage from './components/UserAuthModal/SignUpPage';
 import LoginFormPage from './components/UserAuthModal/LoginFormPage';
-import Navigation from './components/Navigation/Navigation'
 
 function App() {
   return (
     <>
       {/* <Navigation /> */}
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={SplashPage} />
         <Route exact path="/signup" component={SignUpPage} />
         <Route exact path="/login" component={LoginFormPage } />
       </Switch>

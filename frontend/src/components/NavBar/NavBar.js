@@ -17,11 +17,11 @@ import globe from '../../assets/images/icons8-earth-globe-30.png';
 import menu from '../../assets/images/icons8-menu-rounded-30.png';
 import profile from '../../assets/images/icons8-customer-30.png';
 
-import './HomePage.css'
+import './NavBar.css'
 
 
 
-function HomePage() {
+function NavBar() {
 
   const [profileToggle, setProfileToggle] = useState(false);
   const [signUpModalToggle, setSignUpModalToggle] = useState(false);
@@ -44,15 +44,18 @@ function HomePage() {
 
   const logOutHandler = (e) => {
     e.preventDefault();
-    console.log('logging out via handler ... ')
     return dispatch(sessionActions.logout())
-
   };
+
+  
+
 
   return (
     <>
     { signUpModalToggle ? <div className='modal-background' onClick={signUpModalHandler}></div> : "" }
+    { signUpModalToggle ? <div className='modal-wrapper'><SignUpPage onArrowClick={signUpModalHandler} /></div> : "" }
     { logInModalToggle ? <div className='modal-background' onClick={logInModalHandler}></div> : "" }
+    { logInModalToggle ? <div className='modal-wrapper'><LogInFormPage onArrowClick={logInModalHandler} /></div> : "" }
     <section id="header">
       <div id='header_left'>
         <img src={icon} alt="" />
@@ -88,12 +91,10 @@ function HomePage() {
     <section id=''>
       <button>Map</button>
     </section>
-    { signUpModalToggle ? <div className='modal-wrapper'><SignUpPage onArrowClick={signUpModalHandler} /></div> : "" }
-    { logInModalToggle ? <div className='modal-wrapper'><LogInFormPage onArrowClick={logInModalHandler} /></div> : "" }
   </>
   )
 
 
 };
 
-export default HomePage;
+export default NavBar;

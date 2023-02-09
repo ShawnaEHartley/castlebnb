@@ -1,7 +1,6 @@
-import React, { startTransition, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
-import { createUser } from "../../store/users";
 import alert from '../../assets/images/icons8-alert-48.png'
 import * as sessionActions from '../../store/session';
 
@@ -19,16 +18,13 @@ function SignUpPage(props) {
   if (sessionUser) return <Redirect to="/" />
 
 
+  const full_name = `${first_name} ${last_name}`;
+
   const handleSubmit = (e) => {
-    console.log("NO NO NO NONO");
     e.preventDefault();
-    const full_name = `${first_name} ${last_name}`;
     const user = {full_name, email, password};
-    console.log(user)
-    console.log('dick lick big ass fat')
     dispatch(sessionActions.signup(user))
     .catch(async (res) => {
-      console.log('I am in the catch')
       let data;
       try {
         data = await res.clone().json();
@@ -39,7 +35,6 @@ function SignUpPage(props) {
       else if (data) setErrors([data]);
       else setErrors([res.statusText]);
     });
-    console.log(errors)
   }
 
   const handleDemoSubmit = (e) => {
@@ -59,18 +54,67 @@ function SignUpPage(props) {
     });
   }
 
-  const signInErrors = () => {
-      return(
-        <div className='user-auth-error'>
-          <img id="ErrorImg" src={alert} alt="error alert" />
-          <div id='ErrorLineOne'>Please fulfill the below sign up requirements:
-            <ul>
-              {errors.map(error=> <li key={error}>{error}</li>)}
-            </ul>
-          </div>
-        </div>
-        )
-  };
+  let nameError = null;
+  let emailError = null;
+  let passwordError = null;
+
+  if (errors[0]) {
+    if (full_name.length === 0) {
+      nameError = 'Full name is required';
+    } else {
+      nameError = null;
+    };
+
+    if (email === "") {
+      emailError = 'Email is required';
+    } else {
+      emailError = null;
+    };
+
+    if (password === "") {
+      passwordError = 'Password is required';
+    } else if (password.legnth < 6) 
+    {
+      passwordError = 'Password must be at least 6 characters';
+    } else {
+      passwordError = null
+    };
+  }
+  
+  const nameErrorChecker = () => {
+    if (nameError) {
+      return (
+        <p className='signInErrors'>
+          {/* <img src="" alt="" /> */}
+          {nameError}
+        </p>
+      )
+    }
+  }
+
+  const emailErrorChecker = () => {
+    if (emailError) {
+      return (
+        <p className='signInErrors'>
+          {/* <img src="" alt="" /> */}
+          {emailError}
+        </p>
+      )
+    }
+  }
+
+  const passwordErrorChecker = () => {
+    if (passwordError) {
+      return (
+        <p className='signInErrors'>
+          {/* <img src="" alt="" /> */}
+          {passwordError}
+        </p>
+      )
+    }
+  }
+
+
 
   return (
     <div className='userauth-section'>
@@ -84,7 +128,6 @@ function SignUpPage(props) {
       <div className='user-auth-body'>
           <form className='user-auth-form' onSubmit={handleSubmit}>
             <div className='user-auth-error-pane'>
-              {(errors && errors.length) ? signInErrors() : ''}
             </div>
             <div className='full-name-box'>
               {/* <label id='signup_label'>Full Name</label> */}
@@ -97,6 +140,7 @@ function SignUpPage(props) {
                 setLastName(e.target.value)
               }} />
               <p className='user-auth-smalltext'>Make sure it matches the name on your government ID.</p>
+              <div className='error-checker'>{nameErrorChecker()}</div>
             </div>
             <div className='email-box'>
               {/* <label id='signup_label'>Email</label> */}
@@ -105,6 +149,7 @@ function SignUpPage(props) {
                 setEmail(e.target.value)
               }} />
               <p className='user-auth-smalltext'>We'll email you trip confirmations and receipts.</p>
+              <div className='error-checker'>{emailErrorChecker()}</div>
             </div>
             <div className='password-box'>
               {/* <label id='signup_label'>Password</label> */}
@@ -115,11 +160,11 @@ function SignUpPage(props) {
               <div className='user-auth-password-constraints'>
                 <p>At least 6 characters</p>
               </div>
+                <div className='error-checker'>{passwordErrorChecker()}</div>
             </div>
             <div className='user-auth-terms'>By selecting Agree and continue, I agree to Airbnb’s Terms of Service, Payments Terms of Service, and Nondiscrimination Policy and acknowledge the Privacy Policy.</div>
-            <button className='user-auth-button' type='submit'>Agree and continue son</button>
+            <button className='user-auth-button' type='submit'>Agree and continue</button>
             <button className="user-auth-button" onClick={handleDemoSubmit}>Demo user</button>
-            {console.log(errors)}
           </form>
         </div>
     </div>
