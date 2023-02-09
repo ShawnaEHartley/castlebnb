@@ -50,7 +50,9 @@ function HomePage() {
   };
 
   return (
-  <>
+    <>
+    { signUpModalToggle ? <div className='modal-background' onClick={signUpModalHandler}></div> : "" }
+    { logInModalToggle ? <div className='modal-background' onClick={logInModalHandler}></div> : "" }
     <section id="header">
       <div id='header_left'>
         <img src={icon} alt="" />
@@ -86,9 +88,7 @@ function HomePage() {
     <section id=''>
       <button>Map</button>
     </section>
-    { signUpModalToggle ? <div className='modal-background' onClick={signUpModalHandler}></div> : "" }
     { signUpModalToggle ? <div className='modal-wrapper'><SignUpPage onArrowClick={signUpModalHandler} /></div> : "" }
-    { logInModalToggle ? <div className='modal-background' onClick={logInModalHandler}></div> : "" }
     { logInModalToggle ? <div className='modal-wrapper'><LogInFormPage onArrowClick={logInModalHandler} /></div> : "" }
   </>
   )

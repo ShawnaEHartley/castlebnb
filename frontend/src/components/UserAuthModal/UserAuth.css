@@ -120,3 +120,26 @@
   border: none;
   font-size: 17px;
 }
+
+.user-auth-error {
+  display: flex;
+  align-items: center;
+  padding: 2px 2px 10px 2px ;
+}
+
+#ErrorImg {
+  size: 15px;
+  padding-right: 10px;
+}
+
+#ErrorLineOne {
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}
+
+#logInErrorLineTwo {
+  font-size: 12px;
+  color: #660c14;
+  padding-top: 2px;
+}

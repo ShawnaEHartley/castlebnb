@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from "react-redux";
+import alert from '../../assets/images/icons8-alert-48.png'
 import './UserAuth.css';
 
 
@@ -31,8 +32,20 @@ function LoginFormPage(props) {
       else if (data) setErrors([data]);
       else setErrors([res.statusText]);
     });
-
   }
+
+  const errorPane = () => {
+    console.log('I am in the error function')
+    return (
+      <div id='logInError' className='user-auth-error'>
+        <img id='ErrorImg' src={alert} alt="error alert" />
+        <div>
+          <div id='ErrorLineOne'>Let's try that again</div>
+          <div id='logInErrorLineTwo'>Invalid login credentials. Please try again.</div>
+        </div>
+      </div>
+    )
+  };
 
   console.log(errors)
   return (
@@ -48,6 +61,9 @@ function LoginFormPage(props) {
         <div className='user-auth-pane'>
           <form className='user-auth-form'onSubmit={handleSubmit}>
             <div className='email-box'>
+            <div className='user-auth-error'>
+              {errors.map(error => <div key={error}>{errorPane()}</div>)}
+            </div>
               {/* <label className='login_label'>Email</label> */}
               <input className='user-auth-input' type="text" placeholder='Email' value={email} onChange={(e) => {
                 e.preventDefault();
@@ -60,9 +76,6 @@ function LoginFormPage(props) {
                 e.preventDefault();
                 setPassword(e.target.value)
               }} />
-            </div>
-            <div className='user-auth-error'>
-              {errors.map(error => <span key={error}>Let's try that again. Invalid login credentials. Please try again.</span>)}
             </div>
             <button className='user-auth-button' type="submit">Log In</button>
           </form>
