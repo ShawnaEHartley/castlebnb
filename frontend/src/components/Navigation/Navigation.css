@@ -1,0 +1,25 @@
+.profiledrop {
+  position: absolute;
+  right: 20px;
+  top: 95px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background-color: rgb(251, 249, 249);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  border: #660c14;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.profileDropItem {
+  padding: 10px 0px 15px 10px;
+  cursor: pointer;
+}
+
+#profileDropSignUp {
+  font-weight: bold;
+}

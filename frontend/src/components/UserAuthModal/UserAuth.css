@@ -1,0 +1,127 @@
+.userauth-section {
+  display: flex;
+  flex-direction: column;
+  width: 568px;
+  border-radius: 20px;
+  padding-bottom: 45px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(213, 208, 208);;
+}
+
+.userauth-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 20px 30px 20px 30px;
+  font-weight: bolder;
+  border-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(244, 236, 236);
+}
+
+.user-auth-back-arrow {
+  border: solid rgb(117, 116, 116);
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(135deg);
+  cursor: pointer;
+}
+
+.user-auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.full-name-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 0px 25px 0px;
+}
+
+.user-auth-smalltext {
+  font-size: 12px;
+  width: 100%;
+  color: rgb(145, 143, 143);
+  padding: 5px 0px 0px 0px;
+}
+
+.user-auth-password-constraints {
+  font-size: 12px;
+  width: 100%;
+  display: block;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  color: rgb(145, 143, 143);
+  padding: 5px 0px 0px 0px;
+}
+
+.user-auth-input {
+  height: 50px;
+  width: 505px;
+  border: rgb(145, 143, 143);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+#first-name {
+  border-radius: 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: none;
+}
+
+#last-name {
+  border-radius: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.email-box {
+  padding-bottom: 20px;
+}
+
+.password-box {
+  padding-bottom: 10px;
+}
+
+.user-auth-input:focus {
+  border-color: black;
+  outline: none;
+}
+
+.user-auth-terms {
+  font-size: 11px;
+  width: 450px;
+  margin-top: 20px;
+}
+
+.user-auth-button {
+  width: 515px;
+  height: 45px;
+  margin-top: 10px;
+  background-color: #660c14;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  font-size: 17px;
+}
+
+.signInErrors {
+  display: flex;
+  align-items: center;
+  padding: 0px 2px 10px 2px;
+  color: red;
+}
+
