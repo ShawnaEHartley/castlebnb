@@ -1,12 +1,13 @@
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faChessRook, faSearch, faArrowAltCircleUp, faCaretSquareDown, faExclamationTriangle } from '@fortawesome/fontawesome-free-solid'
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Navigation from '../Navigation/Navigation'
 import * as sessionActions from '../../store/session';
 import SignUpPage from '../UserAuthModal/SignUpPage.js';
 import LogInFormPage from '../UserAuthModal/LoginFormPage.js';
+import { closeModalHandler } from '../../store/modal';
 
 
 import icon from '../../assets/images/castle_icon.png';
@@ -18,28 +19,30 @@ import menu from '../../assets/images/icons8-menu-rounded-30.png';
 import profile from '../../assets/images/icons8-customer-30.png';
 
 import './NavBar.css'
+import LoginFormPage from '../UserAuthModal/LoginFormPage.js';
 
 
 
 function NavBar() {
 
   const [profileToggle, setProfileToggle] = useState(false);
-  const [signUpModalToggle, setSignUpModalToggle] = useState(false);
-  const [logInModalToggle, setLogInModalToggle] = useState(false);
-  const dispatch = useDispatch();
+  // const [signUpModalToggle, setSignUpModalToggle] = useState(false);
+  const modalState = useSelector((state)=>{
+    return state.modal;
+  });
 
+  const dispatch = useDispatch();
 
   const toggleProfileHandler = () => {
     setProfileToggle(!profileToggle)
   };
 
   const signUpModalHandler = () => {
-    setSignUpModalToggle(!signUpModalToggle)
+    dispatch({type: "modalOn", component: "signup"})
   };
   
   const logInModalHandler = () => {
-    setLogInModalToggle(!logInModalToggle)
-    logInModalHandler ? setProfileToggle(false) : setProfileToggle(true)
+    dispatch({type: "modalOn", component: "login"});
   };
 
   const logOutHandler = (e) => {
@@ -47,15 +50,18 @@ function NavBar() {
     return dispatch(sessionActions.logout())
   };
 
-  
-
+  const modalComponent = () => {
+    if (modalState.component === "signup") {
+      return <SignUpPage />;
+    } else {
+      return <LoginFormPage />;
+    }
+  };
 
   return (
     <>
-    { signUpModalToggle ? <div className='modal-background' onClick={signUpModalHandler}></div> : "" }
-    { signUpModalToggle ? <div className='modal-wrapper'><SignUpPage onArrowClick={signUpModalHandler} /></div> : "" }
-    { logInModalToggle ? <div className='modal-background' onClick={logInModalHandler}></div> : "" }
-    { logInModalToggle ? <div className='modal-wrapper'><LogInFormPage onArrowClick={logInModalHandler} /></div> : "" }
+    { modalState.on ? <div className='modal-background' onClick={()=>{dispatch(closeModalHandler())}}></div> : "" }
+    { modalState.on ? <div className='modal-wrapper'>{ modalComponent() }</div> : "" }
     <section id="header">
       <div id='header_left'>
         <img src={icon} alt="" />
@@ -81,15 +87,6 @@ function NavBar() {
           { profileToggle ? <Navigation onSignUp={signUpModalHandler} onLogIn={logInModalHandler} onLogOut={logOutHandler} /> : "" }
           </div>
       </div>
-    </section>
-    <section id='categories'>
-      <p>carousel of GoT houses</p>
-    </section>
-    <section id='index'>
-      <p>listing index</p>
-    </section>
-    <section id=''>
-      <button>Map</button>
     </section>
   </>
   )

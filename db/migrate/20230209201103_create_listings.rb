@@ -29,8 +29,6 @@ class CreateListings < ActiveRecord::Migration[7.0]
       t.text :rules
       t.text :cancellation
 
-
-
       t.timestamps
     end
   end

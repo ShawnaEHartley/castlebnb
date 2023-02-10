@@ -34,4 +34,38 @@
 #  updated_at       :datetime         not null
 #
 class Listing < ApplicationRecord
+
+  validates :title,
+    :description,
+    :street_address,
+    :city,
+    :state, 
+    :zip_code,
+    :country,
+    :latitude,
+    :longitude,
+    :region, 
+    :price,
+    :max_guests,
+    :bedrooms,
+    :beds,
+    :baths,
+    presence:true
+
+  validates :kitchen,
+    :parking,
+    :heating,
+    :fireplace,
+    :patio,
+    :wifi,
+    :pets,
+    :self_checkin,
+    inclusion: { in: [true, false] }
+
+  validates :title, uniqueness:true 
+
+  belongs_to :lister,
+    foreign_key: :lister_id,
+    class_name: :User
+  
 end

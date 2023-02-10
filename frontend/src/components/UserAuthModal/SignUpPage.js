@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import alert from '../../assets/images/icons8-alert-48.png'
+import { closeModalHandler } from "../../store/modal";
 import * as sessionActions from '../../store/session';
 
 import './UserAuth.css'
@@ -15,7 +16,7 @@ function SignUpPage(props) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />
+  // if (sessionUser) return <Redirect to="/" />
 
 
   const full_name = `${first_name} ${last_name}`;
@@ -119,7 +120,7 @@ function SignUpPage(props) {
   return (
     <div className='userauth-section'>
       <div className='userauth-header'>
-        <div className='user-auth-back-arrow' onClick={props.onArrowClick}></div>
+        <div className='user-auth-back-arrow' onClick={()=>{dispatch(closeModalHandler())}}></div>
         <div>
           <h1>Sign up</h1>
         </div>

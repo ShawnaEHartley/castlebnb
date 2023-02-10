@@ -1,4 +1,5 @@
 import csrfFetch from './csrf';
+import { closeModalHandler } from './modal';
 
 const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
@@ -34,6 +35,7 @@ export const login = (user) => async(dispatch) => {
   });
   const data = await res.json();
   dispatch(setCurrentUser(data.user));
+  dispatch(closeModalHandler());
   return res;
 };
 

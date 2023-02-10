@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :api do
+    get 'listings/index'
+    get 'listings/create'
+    get 'listings/show'
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -7,8 +12,9 @@ Rails.application.routes.draw do
   post 'api/test', to: 'application#test'
 
   namespace :api, defaults: { format: :json } do
-    resources :users, only: :create
+    resources :users, only: [:create]
     resource :session, only: [:show, :create, :destroy]
+    resources :listings, only: [:index]
   end
 
 

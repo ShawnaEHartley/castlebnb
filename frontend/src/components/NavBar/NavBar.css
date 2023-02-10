@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
-  padding: 20px;
+  height: 68px;
+  padding: 10px 20px 10px 20px;
   color: #660c14;
   border-color: rgb(244, 236, 236);
   border-width: 1px;

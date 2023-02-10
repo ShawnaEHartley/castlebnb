@@ -4,6 +4,7 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from "react-redux";
 import alert from '../../assets/images/icons8-alert-48.png'
 import './UserAuth.css';
+import { closeModalHandler } from "../../store/modal";
 
 
 function LoginFormPage(props) {
@@ -49,7 +50,7 @@ function LoginFormPage(props) {
   return (
     <section className='userauth-section'>
       <div className='userauth-header'>
-        <div className='user-auth-back-arrow' onClick={props.onArrowClick}></div>
+        <div className='user-auth-back-arrow' onClick={()=>{dispatch(closeModalHandler())}}></div>
         <div>
           <h1>Log in</h1>
         </div>
