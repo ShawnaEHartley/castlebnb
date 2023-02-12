@@ -16,8 +16,13 @@ class Api::ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    puts "HIHIHI"
+    puts @listing
     if @listing 
+      puts "inside the if"
       render 'api/listings/show'
+    else 
+      render json: { errors: @listing.errors.full_messages }, status: 404
     end
   end
 

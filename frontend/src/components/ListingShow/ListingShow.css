@@ -1,0 +1,79 @@
+.listing-show-page {
+  padding: 15px 40px 20px 40px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.subtitle-wrapper {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  height: 30px;
+
+}
+
+.icon {
+  height: 14px;
+  width: 14px;
+}
+
+.subtitle-left {
+  display: flex;
+  align-items: center;
+}
+
+.subtitle-left-item {
+  padding-left: 7px;
+}
+
+#show-icon-rating-text {
+  font-weight: bold;
+}
+
+#show-icon-review-text {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#show-icon-badge {
+  height: 14px;
+  width: 6px;
+}
+
+.location {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.subtitle-right {
+  display: flex;
+  flex-direction: row;
+}
+
+#share-button {
+  display: flex;
+  background: none;
+  border: none;
+  align-items: center;
+}
+
+#share-button:hover {
+  background-color: rgb(241, 239, 239);
+  border-radius: 5px;
+}
+
+#like-button {
+  display: flex;
+  background: none;
+  border: none;
+  align-items: center;
+}
+
+#like-button:hover {
+  background-color: rgb(241, 239, 239);
+  border-radius: 5px;
+}

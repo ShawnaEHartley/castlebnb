@@ -20,6 +20,7 @@ import profile from '../../assets/images/icons8-customer-30.png';
 
 import './NavBar.css'
 import LoginFormPage from '../UserAuthModal/LoginFormPage.js';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -58,12 +59,18 @@ function NavBar() {
     }
   };
 
+  const history = useHistory();
+  
+  const returnHome = () => {
+    history.push('/')
+  };
+
   return (
     <>
     { modalState.on ? <div className='modal-background' onClick={()=>{dispatch(closeModalHandler())}}></div> : "" }
     { modalState.on ? <div className='modal-wrapper'>{ modalComponent() }</div> : "" }
     <section id="header">
-      <div id='header_left'>
+      <div id='header_left' onClick={returnHome}>
         <img src={icon} alt="" />
         <span className='logo-title'>castlebnb</span>
       </div>

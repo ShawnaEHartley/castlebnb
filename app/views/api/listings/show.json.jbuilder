@@ -1,3 +1,3 @@
 json.listing do
-  json.partial! '/api/listing/listing', listing: @listing
+  json.extract! @listing, :id, :title, :description, :price, :city, :region
 end
