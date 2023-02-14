@@ -17,11 +17,19 @@ const ListingIndex = () => {
     dispatch(fetchListings())
   }, [dispatch])
 
+  if (!listings) {
+    return (
+      <div>..loading</div>
+    )
+  };
+
+  console.log(listings)
+
   return (
     <div className="index">
       {listings.map((listing) => {
         return (
-          <ListingIndexItem listing={listing} />
+          listing ? <ListingIndexItem listing={listing} key={listing.id} /> : 'loading'
         )
       })}
     </div>

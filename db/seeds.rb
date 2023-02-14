@@ -7,6 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
+
+require "open-uri"
+
+
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
@@ -25,32 +29,87 @@ ApplicationRecord.transaction do
     password: 'hello123'
   )
 
-  10.times do 
-    User.create!({
-      full_name: Faker::Internet.unique.username(specifier: 3),
-      email: Faker::Internet.unique.email,
-      password: 'password'
-    }) 
-  end
+  User.create!(
+    full_name: 'Jon Snow', 
+    email: 'youknownothing@test.com', 
+    password: 'password'
+  )
+
+  User.create!(
+    full_name: 'Daenerys Targaryen', 
+    email: 'dragonmama@test.com', 
+    password: 'password'
+  )
+
+  User.create!(
+    full_name: 'Cersei Lannister', 
+    email: 'queencee@test.com', 
+    password: 'password'
+  )
+
+  User.create!(
+    full_name: 'Olenna Tyrell', 
+    email: 'tellcersei@test.com', 
+    password: 'password'
+  )
+
+  User.create!(
+    full_name: 'Jamie Lannister', 
+    email: 'kingslayer@test.com', 
+    password: 'password'
+  )
+
+  User.create!(
+    full_name: 'Hodor', 
+    email: 'hodor@test.com', 
+    password: 'hodorhodor'
+  )
+
+  User.create!(
+    full_name: 'Tyrion Lannister', 
+    email: 'drinkandknowthings@test.com', 
+    password: 'password'
+  )
+
+  User.create!(
+    full_name: 'Arya Stark', 
+    email: 'pointyend@test.com', 
+    password: 'password'
+  )
+
+  User.create!(
+    full_name: 'Oberyn Martell', 
+    email: 'ifightfordorne@test.com', 
+    password: 'password'
+  )
+
+  User.create!(
+    full_name: 'Lyanna Mormont', 
+    email: 'noknitting@test.com', 
+    password: 'password'
+  )
+
 
   puts "Creating listings..."
   Listing.create!(
     title: "A wing in Dragonstone",
-    lister_id: 1,
+    subtitle: 'Built in 114 BC',
+    lister_id: 3,
     description: "Welcome to the magnificent wing of Dragonstone, a stunning castle located in the heart of Westeros. This beautiful space, once the seat of House Targaryen, offers breathtaking views of the surrounding mountains and the Narrow Sea.
     As you enter the wing, you'll be greeted by a grand hall with soaring ceilings and elegant furnishings. Admire the intricate stone carvings, the majestic dragon sculptures, and the shimmering chandeliers. The hall is the perfect space for hosting dinner parties or simply relaxing after a long day of exploring the castle. 
     The wing boasts three spacious bedrooms, each with its own unique style and luxurious amenities. You'll find plush bedding, warm fireplaces, and stunning views from every window. The master suite features a magnificent four-poster bed, a grand bathtub, and a private balcony with breathtaking views. 
     The kitchen is fully equipped with all the modern appliances you need to prepare meals for your stay. Dine in the elegant dining room, or enjoy a relaxed meal on the terrace while taking in the views. As a guest in the wing of Dragonstone, you'll have access to all the castle's common areas, including the grand courtyard, the impressive gardens, and the stone throne room. Take a stroll through the castle's secret passages, or relax in the library with a good book. 
     This magnificent wing of Dragonstone offers the ultimate escape from the hustle and bustle of modern life. Come and experience the grandeur and luxury of Westeros for yourself. Book your stay now!",
-    street_address: "1 Old Queens Rd",
-    city: "Skegness",
-    state: "Lincolnshire",
+    street_address: "1 Aegon Rd",
+    city: "Dragonstone",
+    state: "The Crownlands",
     zip_code: "01754",
-    country: "England",
+    country: "Kings Landing",
     latitude: 53.1464,
     longitude: 0.3379,
     region: "Kings Landing",
     price: 300,
+    max_guests: 6,
     bedrooms: 3,
     beds: 3,
     baths: 3,
@@ -58,8 +117,9 @@ ApplicationRecord.transaction do
   )
 
   Listing.create!(
-    title: "The Iron Throne",
-    lister_id: 4,
+    title: "The Red Keep",
+    subtitle: 'Built in 45 AC',
+    lister_id: 2,
     description: "Experience the epitome of architectual grandeur with a stay at the magnificent Red Keep. This stunning fortress, located in the heart of a bustling city, is a true gem of medieval architecture and the perfect choice for travelers seeking a unique and unforgettable experience.
     Enter the castle's grand halls, filled with elaborate tapestries and antique furnishings, and feel like royalty as you bask in the richness of its history. With room for up to 30 guests, this castle is perfect for families, friends, and large groups looking for a one-of-a-kind getaway.
     The castle features a number of spacious and well-appointed bedrooms, each with its own unique charm and character. Soak in the views of the surrounding city from the comfort of your bed, or take a stroll around the castle's battlements and imagine yourself as a medieval lord, surveying your lands.
@@ -74,7 +134,7 @@ ApplicationRecord.transaction do
     longitude: -0.1557,
     region: "King's Landing",
     price: 1000,
-    max_guests: 1,
+    max_guests: 2,
     bedrooms: 1,
     beds: 1,
     baths: 1,
@@ -90,7 +150,8 @@ ApplicationRecord.transaction do
 
   Listing.create!(
     title: "The Western Castle at The Twins",
-    lister_id: 2,
+    subtitle: 'Built 300 BC',
+    lister_id: 9,
     description: "Experience the splendor of Westeros with a stay at the historic and magnificent Castle at The Twins! This magnificent fortress, located in the heart of the Riverlands, is a true gem of Westerosi architecture and the perfect choice for travelers seeking an unforgettable experience.
     Enter the castle's grand halls, filled with elaborate tapestries and antique furnishings, and feel like royalty as you bask in the richness of its history. With room for up to 20 guests, this castle is perfect for families, friends, and large groups looking for a unique and unforgettable getaway.
     The castle features a number of spacious and well-appointed bedrooms, each with its own unique charm and character. Soak in the views of the surrounding countryside from the comfort of your bed, or take a stroll around the castle's battlements and imagine yourself as a medieval lord, surveying your lands.
@@ -123,7 +184,8 @@ ApplicationRecord.transaction do
   
   Listing.create!(
     title: "Winterfell Castle",
-    lister_id: 3,
+    subtitle: 'Built 8,000 BC',
+    lister_id: 9,
     description: "Escape to the heart of the North with a stay in a room at the historic Winterfell Castle. This magnificent fortress, located in the rolling hills of the North, is a true testament to the ancestrial home of the Starks.
     Your spacious and well-appointed room features antique furnishings, elegant tapestries, and breathtaking views of the surrounding countryside. Relax in the comfort of your bed and soak in the ambiance of this ancient castle, or take a stroll around the castle's ramparts and imagine yourself as a medieval lord, surveying your lands.
     The castle also features a grand dining hall, where you can enjoy feasts fit for a king and share tales of your adventures. The fully equipped kitchen will allow you to cook up your own creations or let the castle's staff cook for you.
@@ -152,4 +214,14 @@ ApplicationRecord.transaction do
   )
 
   puts "Done!"
+
+
 end
+
+
+Listing.first.photos.attach(
+    # The string passed to URI.open should be the URL of the image in its bucket.
+    # This sample assumes the bucket name is `benchbnb-seeds`.
+    io: URI.open("https://castlebnb-seeds.s3.amazonaws.com/Dragonstone-image-1.webp"), 
+    filename: "Dragonstone-image-1.webp"
+  )

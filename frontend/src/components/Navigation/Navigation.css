@@ -1,7 +1,7 @@
 .profiledrop {
   position: absolute;
-  right: 20px;
-  top: 95px;
+  right: 280px;
+  top: 75px;
   width: 240px;
   display: flex;
   flex-direction: column;

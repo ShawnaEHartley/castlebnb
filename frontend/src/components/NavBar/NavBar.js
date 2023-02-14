@@ -54,7 +54,7 @@ function NavBar() {
   const modalComponent = () => {
     if (modalState.component === "signup") {
       return <SignUpPage />;
-    } else {
+    } else if (modalState.component === 'login') {
       return <LoginFormPage />;
     }
   };

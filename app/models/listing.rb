@@ -32,6 +32,7 @@
 #  cancellation     :text
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  subtitle         :string
 #
 class Listing < ApplicationRecord
 
@@ -67,5 +68,7 @@ class Listing < ApplicationRecord
   belongs_to :lister,
     foreign_key: :lister_id,
     class_name: :User
+
+  has_many_attached :photos
   
 end

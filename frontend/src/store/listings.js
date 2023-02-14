@@ -18,12 +18,9 @@ const receiveListings = listings => {
 };
 
 export const getListing = listingId => state => {
-  console.log('I AM in the get listing')
   if (state.listings) {
-    console.log(state.listings)
     return state.listings[listingId];
   } else {
-    console.log("null")
     return null;
   }
 };
