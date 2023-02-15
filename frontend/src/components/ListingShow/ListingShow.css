@@ -177,6 +177,12 @@
   line-height: 18px;
 }
 
+.listing-show-inclusion-icon-title {
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
 .listing-inclusion-icons {
   margin: 10px 0px;
   display: flex;
@@ -225,19 +231,38 @@
   text-decoration: underline;
 }
 
-.listing-description-modal-content {
-  width: 400px;
+.listing-description-modal {
   margin: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+}
+
+.closebutton {
+  font-size: 20px;
+  margin: 0px 0px 40px 0px;
+  background-color: white;
+  border: none;
+}
+
+.listing-description-modal-body {
+  overflow-y: auto;
+  
+}
+
+.listing-description-modal-title {
+  margin-bottom: 40px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.listing-description-modal-content {
+  width: 700px;
+  height: 500px;
+  font-size: 16px;
+  line-height: 30px;
+  white-space: pre-line;
 }
 
 .reservation-wrapper {
-  width: 42%;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(244, 236, 236);
+  width: 30%;
 }
 
 

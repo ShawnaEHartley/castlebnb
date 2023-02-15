@@ -13,6 +13,7 @@ import share from '../../assets/images/icons8-share-rounded-96.png';
 import like from '../../assets/images/icons8-favorite-90.png';
 
 import './ListingShow.css';
+import ReservationForm from '../ReservationForm/ReservationForm';
 
 
 const ListingShow = () => {
@@ -20,25 +21,26 @@ const ListingShow = () => {
   const {listingId} = useParams();
   const listing = useSelector(getListing(listingId));
 
+  
   useEffect(()=> {
     dispatch(fetchListing(listingId));  
   }, [dispatch, listingId]);
-
+  
   const modalState = useSelector((state)=>{
     return state.modal;
   });
-
+  
   if (!listing) {
     return (
       <div>Loading...</div>
     )
   };
 
-  if (!listing.photoUrls) {
-    return ( 
-      <div>...loading</div>
-    )
-  };
+  // if (!listing.photoUrls) {
+  //   return ( 
+  //     <div>...loading photos</div>
+  //   )
+  // };
 
   const showDescriptionModal = () => {
     dispatch({type: 'modalOn', component: 'showDescription'});
@@ -47,8 +49,14 @@ const ListingShow = () => {
   const modalComponent = () => {
     if (modalState.component === 'showDescription') {
       return (
-        <div className="listing-description-modal-content">
-          {listing.description}
+        <div className='listing-description-modal'>
+          <button className='closebutton' onClick={()=>{dispatch(closeModalHandler())}}> x </button>
+          <div className='listing-description-modal-body'>
+            <div className='listing-description-modal-title'>About this space</div>
+            <div className="listing-description-modal-content">
+              {listing.description}
+            </div>
+          </div>
         </div>
       )
     }
@@ -61,7 +69,7 @@ const ListingShow = () => {
     <>
     { modalState.on ? <div className='modal-background' onClick={()=>{dispatch(closeModalHandler())}}></div> : "" }
     { modalState.on ? <div className='modal-wrapper'>{ modalComponent() }</div> : "" }
-    <div class='whole-show-page'>
+    <div className='whole-show-page'>
       <NavBar />
       <div className='listing-show-page'>
 
@@ -101,13 +109,13 @@ const ListingShow = () => {
 
         <div className='picture-wrapper'>
         <div className='show-main-pic-container'>
-          <img src={listing.photoUrls[0]} alt="listing-main" className='show-main-pic' />
+          <img src={listing.photoUrl[0]} alt="listing-main" className='show-main-pic' />
         </div>
         <div className='show-images-container'>
-          <img src={listing.photoUrls[1]} alt="" className='show-pic' id='listing-show-pic-1'/>
-          <img src={listing.photoUrls[2]} alt="" className='show-pic' id='listing-show-pic-2'/>
-          <img src={listing.photoUrls[3]} alt="" className='show-pic' id='listing-show-pic-3'/>
-          <img src={listing.photoUrls[4]} alt="" className='show-pic' id='listing-show-pic-4'/>
+          <img src={listing.photoUrl[1]} alt="" className='show-pic' id='listing-show-pic-1'/>
+          <img src={listing.photoUrl[2]} alt="" className='show-pic' id='listing-show-pic-2'/>
+          <img src={listing.photoUrl[3]} alt="" className='show-pic' id='listing-show-pic-3'/>
+          <img src={listing.photoUrl[4]} alt="" className='show-pic' id='listing-show-pic-4'/>
         </div>
         </div>
 
@@ -152,6 +160,8 @@ const ListingShow = () => {
 
           <div className="showpage-line"></div>
         
+          <div className='listing-inclusion-wrapper'>
+          <div className='listing-show-inclusion-icon-title'>What this place offers</div>
           <div className='listing-inclusion-icons'>
             { amenities.map((amenity, i) => {
               if ( listing[amenity] ) {
@@ -164,10 +174,11 @@ const ListingShow = () => {
               } else return ("")
             }) }
           </div>
+          </div>
         </div>
 
         <div className='reservation-wrapper'> 
-          <div class='reservation'>Reservation placeholder</div>
+          <ReservationForm />
         </div>
         </div>
         <div className='long-placeholder'> Reviews placeholder </div>

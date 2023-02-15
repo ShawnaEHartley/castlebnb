@@ -1,7 +1,12 @@
+.index-wrapper {
+  align-items: center;
+}
+
 .index {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: center;
   padding: 5px 15px 5px 15px;
   cursor: pointer;
 }

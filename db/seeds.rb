@@ -91,7 +91,7 @@ ApplicationRecord.transaction do
 
 
   puts "Creating listings..."
-  Listing.create!(
+  l1 = Listing.create!(
     title: "A wing in Dragonstone",
     subtitle: 'Built in 114 BC',
     lister_id: 3,
@@ -116,7 +116,7 @@ ApplicationRecord.transaction do
     pets: false
   )
 
-  Listing.create!(
+  l2 = Listing.create!(
     title: "The Red Keep",
     subtitle: 'Built in 45 AC',
     lister_id: 2,
@@ -148,7 +148,7 @@ ApplicationRecord.transaction do
     cancellation: "Strict"
   )
 
-  Listing.create!(
+  l3 = Listing.create!(
     title: "The Western Castle at The Twins",
     subtitle: 'Built 300 BC',
     lister_id: 9,
@@ -182,7 +182,7 @@ ApplicationRecord.transaction do
     cancellation: "Moderate"
   )
   
-  Listing.create!(
+  l4 = Listing.create!(
     title: "Winterfell Castle",
     subtitle: 'Built 8,000 BC',
     lister_id: 9,
@@ -213,15 +213,50 @@ ApplicationRecord.transaction do
     self_checkin: true
   )
 
-  puts "Done!"
+  puts 'Attaching photos...'
 
+  l1.photos.attach([
+  {io: URI.open("https://castlebnb-seeds.s3.amazonaws.com/Dragonstone-image-1.png"), filename: "Dragonstone-image-1.png"},
+  {io: URI.open("https://castlebnb-seeds.s3.amazonaws.com/dragonstone-approach.png"), filename: "Dragonstone-approach.png"},
+  {io: URI.open("https://castlebnb-seeds.s3.amazonaws.com/dragonstone-bedroom-1.jpeg"), filename: "Dragonstone-bedroom-1.jpeg"},
+  {io: URI.open("https://castlebnb-seeds.s3.amazonaws.com/dragonstone-bedroom-2.jpeg"), filename: "Dragonstone-bedroom-2.jpeg"},
+  {io: URI.open("https://castlebnb-seeds.s3.amazonaws.com/dragonstone-ext.jpg"), filename: "Dragonstone-ext.jpg"},
+  {io: URI.open("https://castlebnb-seeds.s3.amazonaws.com/dragonstone-painted-table.png"), filename: "Dragonstone-painted-table.png"},
+  {io: URI.open("https://castlebnb-seeds.s3.amazonaws.com/dragonstone-throne-room.jpeg"), filename: "Dragonstone-throne-room.jpeg"},
+  {io: URI.open("https://castlebnb-seeds.s3.amazonaws.com/dragonstone-painted-table2.jpeg"), filename: "Dragonstone-painted-table.jpeg"}
+  ])
+
+  l2.photos.attach([
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/RedKeep_1.png'), filename: 'RedKeep_1.png'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/RedKeep_bedroom.png'), filename: 'RedKeep_bedroom.png'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/RedKeep_dining_room.png'), filename: 'RedKeep_dining_room.png'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/RedKeep_iron_throne.png'), filename: 'RedKeep_iron_throne.png'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/RedKeep_throne_room.jpeg'), filename: 'RedKeep_throne_room.jpeg'}
+  ])
+
+  l3.photos.attach([
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/Twins_ext_2.png'), filename:'Twins_ext_2.png'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/Twins_bedroom.jpeg'), filename:'Twins_bedroom.jpeg'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/Twins_dining_room_2.png'), filename:'Twins_dining_room_2.png'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/Twins_dining_room.png'), filename:'Twins_dining_room.png'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/Twins_ext_3.jpeg'), filename:'Twins_ext_3.jpeg'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/Twins_ext.png'), filename:'Twins_ext.png'}
+  ])
+
+  l4.photos.attach([
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/Winterfell_ext.jpeg'), filename:'Winterfell_ext.jpeg'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/Winterfell_bedroom.jpeg'), filename:'Winterfell_bedroom.jpeg'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/Winterfell_dining_room.jpeg'), filename:'Winterfell_dining_room.jpeg'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/Winterfell_hallway.jpeg'), filename:'Winterfell_hallway.jpeg'},
+    {io: URI.open('https://castlebnb-seeds.s3.amazonaws.com/Winterfell_int.jpeg'), filename:'Winterfell_int.jpeg'}
+  ])
+
+  
+
+
+
+  puts "Done!"
 
 end
 
 
-Listing.first.photos.attach(
-    # The string passed to URI.open should be the URL of the image in its bucket.
-    # This sample assumes the bucket name is `benchbnb-seeds`.
-    io: URI.open("https://castlebnb-seeds.s3.amazonaws.com/Dragonstone-image-1.webp"), 
-    filename: "Dragonstone-image-1.webp"
-  )

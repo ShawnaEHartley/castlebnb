@@ -23,15 +23,15 @@ const ListingIndex = () => {
     )
   };
 
-  console.log(listings)
-
   return (
-    <div className="index">
-      {listings.map((listing) => {
-        return (
-          listing ? <ListingIndexItem listing={listing} key={listing.id} /> : 'loading'
-        )
-      })}
+    <div className='index-wrapper'> 
+      <div className="index">
+        {listings.map((listing) => {
+          return (
+            listing ? <ListingIndexItem listing={listing} key={listing.id} /> : 'loading'
+          )
+        })}
+      </div>
     </div>
   )
 }

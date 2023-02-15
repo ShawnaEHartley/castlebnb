@@ -38,7 +38,7 @@ export const fetchListing = listingId => async dispatch => {
 
   if (res.ok) {
     const data = await res.json();
-    dispatch(receiveListing(data.listing));
+    dispatch(receiveListing(data));
     return res;
   }
 };
