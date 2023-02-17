@@ -32,8 +32,9 @@ Similar to a bed and breakfast, hosts can rent out spare rooms, private or share
 * Demo User Capabilities
 
 ### Listings
-* TBD
-* 
+* TBD users can become hosts and list properties or rooms for rent
+* current listings are seeded with thorough descriptions
+* TBD listings will have a calendar showing availabiilty per host and reserved days
 
 ### Reviews
 * Logged-in users can post a review on listings
@@ -52,3 +53,14 @@ Similar to a bed and breakfast, hosts can rent out spare rooms, private or share
 ### Reservations
 * TBD
 * Logged-in users can reserve a listing for available dates
+
+
+### Utilization of AWS S3
+** code snippet of S3 attch photos to listing
+
+### Modal Handler in store
+** code snippet of Modal Handler functionality js code
+** video of modal working
+** modal walkthrough
+
+
