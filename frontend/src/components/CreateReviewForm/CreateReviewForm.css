@@ -1,0 +1,49 @@
+.review-form-outter-wrapper {
+  padding: 20px 40px;
+}
+
+.review-form-user {
+  margin: 30px 0px 10px 0px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.review-form-rating-wrapper {
+  margin: 20px 60px;
+}
+
+.review-form-ratings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 10px;
+}
+
+.review-form-input-title {
+  margin: 0px 0px 3px 0px;
+}
+
+.review-form-body-input {
+  height: 200px;
+  width: 480px;
+  padding: 10px;
+  border-radius: 10px;
+  font: inherit;
+}
+
+.review-form-submit-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.review-form-submit-button {
+  margin: 20px 0px 0px 0px;
+  width: 310px;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  background-color: #660c14;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-left: 10px;
+}

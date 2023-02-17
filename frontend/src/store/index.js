@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import session from './session';
 import modal from './modal';
 import listings from './listings';
+import reviews from './reviews';
 
 let enhancer;
 
@@ -19,10 +20,14 @@ export const rootReducer = combineReducers({
   session,
   modal,
   listings,
+  reviews, 
 });
 
 const configureStore = (preloadedState) => {
   return createStore(rootReducer, preloadedState, enhancer);
 };
+
+
+
 
 export default configureStore;

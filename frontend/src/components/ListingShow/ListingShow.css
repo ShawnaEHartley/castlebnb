@@ -273,4 +273,40 @@
   margin: 40px 12px 18px 10px;
   height: 400px;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#show-page-review-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 20px;
+  height: 800px;
+}
+
+.write-a-review-button {
+  margin: 20px;
+  width: 310px;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  background-color: #660c14;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-left: 10px;
+}
+
+.show-page-review-index-wrapper {
+  width: 99%;
+}
+
+.show-page-map-wrapper {
+  height: 380px;
+  width: 98%;
+  object-fit: cover;
+  border-radius: 10px;
 }

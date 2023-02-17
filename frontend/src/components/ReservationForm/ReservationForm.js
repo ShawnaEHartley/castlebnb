@@ -35,7 +35,7 @@ const ReservationForm = () => {
           <img src={star} alt="star" className='icon subtitle-left-item' id='show-icon-star' />
           <div className='icon-text subtitle-left-item' id='show-icon-rating-text'>4.76</div>
           <span className='subtitle-left-item'>·</span>
-          <div className='icon-text subtitle-left-item' id='show-icon-review-text'>27 reviews</div>
+          <div className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</div>
         </div>
       </div>
 

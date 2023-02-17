@@ -22,10 +22,12 @@
 }
 
 #header_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   height: 35px;
   border-radius: 20px;
-  text-align: center;
   border: #660c14;
   border-width: 2px;
   border-style: solid;

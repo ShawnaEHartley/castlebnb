@@ -1,4 +1,54 @@
 class Api::ListingsController < ApplicationController
+
+  # attributes: [cleanliness_rating, communication_rating, checkin_rating, accuracy_rating, location_rating, value_rating]
+  def average_cleanliness(reviews)
+    if reviews.length == 0
+      return @average_cleanliness = 0
+    end
+    total = reviews.map {|review| review.cleanliness_rating}.reduce(0) {|num, value| num + value}
+    @average_cleanliness = total / (reviews.length)
+  end
+
+  def average_communication(reviews)
+    if reviews.length == 0
+      return @average_communication = 0
+    end
+    total = reviews.map {|review| review.communication_rating}.reduce(0) {|num, value| num + value}
+    @average_communication = total / (reviews.length)
+  end
+
+  def average_checkin(reviews)
+    if reviews.length == 0
+      return @average_checkin = 0
+    end
+    total = reviews.map {|review| review.checkin_rating}.reduce(0) {|num, value| num + value}
+    @average_checkin = total / (reviews.length)
+  end
+
+  def average_accuracy(reviews)
+    if reviews.length == 0
+      return @average_accuracy = 0
+    end
+    total = reviews.map {|review| review.accuracy_rating}.reduce(0) {|num, value| num + value}
+    @average_accuracy = total / (reviews.length)
+  end
+
+  def average_location(reviews)
+    if reviews.length == 0
+      return @average_location = 0
+    end
+    total = reviews.map {|review| review.location_rating}.reduce(0) {|num, value| num + value}
+    @average_location = total / (reviews.length)
+  end
+
+  def average_value(reviews)
+    if reviews.length == 0
+      return @average_value = 0
+    end
+    total = reviews.map {|review| review.value_rating}.reduce(0) {|num, value| num + value}
+    @average_value = total / (reviews.length)
+  end
+
   def index
     @listings = Listing.all
     render 'api/listings/index'
@@ -16,10 +66,15 @@ class Api::ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
-    puts "HIHIHI"
-    puts @listing
+    reviews = @listing.reviews
+    average_cleanliness(reviews)
+    average_communication(reviews)
+    average_checkin(reviews)
+    average_accuracy(reviews)
+    average_location(reviews)
+    average_value(reviews)
+
     if @listing 
-      puts "inside the if"
       render 'api/listings/show'
     else 
       render json: { errors: @listing.errors.full_messages }, status: 404

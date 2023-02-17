@@ -1,12 +1,15 @@
 import ListingIndex from "../ListingIndex/ListingIndex";
 import NavBar from "../NavBar/NavBar";
+import './SplashPage.css'
 
 const SplashPage = () => {
 
   return (
     <>
-      <NavBar />
-      <ListingIndex />
+      <div className='splash-page-wrapper'>
+        <NavBar />
+        <ListingIndex />
+      </div>
     </>
   )
 }

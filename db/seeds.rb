@@ -23,66 +23,78 @@ ApplicationRecord.transaction do
   ApplicationRecord.connection.reset_pk_sequence!('listings')
 
   puts "Creating users..."
+
+  #1
   User.create!(
     full_name: 'Demo User', 
     email: 'demo@test.com', 
     password: 'hello123'
   )
 
+  #2
   User.create!(
     full_name: 'Jon Snow', 
     email: 'youknownothing@test.com', 
     password: 'password'
   )
 
+  #3
   User.create!(
     full_name: 'Daenerys Targaryen', 
     email: 'dragonmama@test.com', 
     password: 'password'
   )
 
+  #4
   User.create!(
     full_name: 'Cersei Lannister', 
     email: 'queencee@test.com', 
     password: 'password'
   )
 
+  #5
   User.create!(
     full_name: 'Olenna Tyrell', 
     email: 'tellcersei@test.com', 
     password: 'password'
   )
 
+  #6
   User.create!(
     full_name: 'Jamie Lannister', 
     email: 'kingslayer@test.com', 
     password: 'password'
   )
 
+  #7
   User.create!(
     full_name: 'Hodor', 
     email: 'hodor@test.com', 
     password: 'hodorhodor'
   )
 
+  #8
   User.create!(
     full_name: 'Tyrion Lannister', 
     email: 'drinkandknowthings@test.com', 
     password: 'password'
   )
 
+  #9
   User.create!(
     full_name: 'Arya Stark', 
     email: 'pointyend@test.com', 
     password: 'password'
   )
 
+  #10
   User.create!(
     full_name: 'Oberyn Martell', 
     email: 'ifightfordorne@test.com', 
     password: 'password'
   )
 
+  #11
   User.create!(
     full_name: 'Lyanna Mormont', 
     email: 'noknitting@test.com', 
@@ -91,6 +103,8 @@ ApplicationRecord.transaction do
 
 
   puts "Creating listings..."
+
+
   l1 = Listing.create!(
     title: "A wing in Dragonstone",
     subtitle: 'Built in 114 BC',
@@ -252,8 +266,19 @@ ApplicationRecord.transaction do
   ])
 
   
+  puts 'Writing reviews... '
 
-
+  Review.create!(
+    listing_id: 1,
+    user_id: 10,
+    cleanliness_rating: 4,
+    communication_rating: 4,
+    checkin_rating: 4,
+    accuracy_rating: 4,
+    location_rating: 4,
+    value_rating: 4,
+    body:"Great stay! We didn't need to contact the host for anything. Everything we needed was included and provided. The castle grounds were fantastic to wonder around, and we loved walking the beach toward the dragon pit. Be careful, though; sometimes the trainers are out with the dragons ... keep your distance. They are can territorial (so we heard, thank goodness we didn't experience that)."
+  )
 
   puts "Done!"
 

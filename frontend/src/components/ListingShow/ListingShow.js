@@ -3,24 +3,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { fetchListing, getListing } from '../../store/listings';
-import NavBar from "../NavBar/NavBar";
 import { closeModalHandler } from '../../store/modal';
 
-import pic from '../../assets/images/image-coming-soon.png';
 import star from '../../assets/images/icons8-star-filled-100.png';
 import badge from '../../assets/images/super-host.png';
 import share from '../../assets/images/icons8-share-rounded-96.png';
 import like from '../../assets/images/icons8-favorite-90.png';
 
 import './ListingShow.css';
+
+import NavBar from "../NavBar/NavBar";
 import ReservationForm from '../ReservationForm/ReservationForm';
+import CreateReviewForm from '../CreateReviewForm/CreateReviewForm';
+import ReviewIndex from '../ReviewIndex/ReviewIndex';
 
 
 const ListingShow = () => {
   const dispatch = useDispatch();
   const {listingId} = useParams();
   const listing = useSelector(getListing(listingId));
-
+  const currentUser = useSelector(state => state.session.user)
   
   useEffect(()=> {
     dispatch(fetchListing(listingId));  
@@ -35,12 +37,6 @@ const ListingShow = () => {
       <div>Loading...</div>
     )
   };
-
-  // if (!listing.photoUrls) {
-  //   return ( 
-  //     <div>...loading photos</div>
-  //   )
-  // };
 
   const showDescriptionModal = () => {
     dispatch({type: 'modalOn', component: 'showDescription'});
@@ -59,11 +55,18 @@ const ListingShow = () => {
           </div>
         </div>
       )
+    } else if (modalState.component === 'showReviewForm') {
+      return (
+        <CreateReviewForm listing={listing}/>
+      )
     }
   };
 
   const amenities = ["kitchen", "parking", "heating", "fireplace", "patio", "wifi", "pets", "self_checkin"]
 
+  const writeAReview = () => {
+    dispatch({type: 'modalOn', component: 'showReviewForm'})
+  }
 
   return (
     <>
@@ -84,7 +87,7 @@ const ListingShow = () => {
             <img src={star} alt="star" className='icon subtitle-left-item' id='show-icon-star' />
             <div className='icon-text subtitle-left-item' id='show-icon-rating-text'>4.76</div>
             <span className='subtitle-left-item'>·</span>
-            <div className='icon-text subtitle-left-item' id='show-icon-review-text'>27 reviews</div>
+            <div className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</div>
             <span className='subtitle-left-item'>·</span>
             <img src={badge} alt="badge" className='icon subtitle-left-item' id='show-icon-badge' />
             <div className='icon-text subtitle-left-item' id='show-icon-host-text'>Superhost</div>
@@ -166,7 +169,7 @@ const ListingShow = () => {
             { amenities.map((amenity, i) => {
               if ( listing[amenity] ) {
               return (
-                <div className='amenity' id={`amenity-id-${i}`}>
+                <div className='amenity' id={`amenity-id-${i}`} key={i}>
                   <img src={`https://castlebnb-seeds.s3.amazonaws.com/icon-${amenity}.png`} alt={amenity} />
                   <span className='amenity-text'>{amenity[0].toUpperCase() + amenity.slice(1)}</span>
                 </div>
@@ -181,8 +184,19 @@ const ListingShow = () => {
           <ReservationForm />
         </div>
         </div>
-        <div className='long-placeholder'> Reviews placeholder </div>
-        <div className='long-placeholder'> Map placeholder </div>
+
+        <div className='long-placeholder' id='show-page-review-wrapper'> 
+          <div className='show-page-write-review-wrapper'>
+          { currentUser ? <button className='write-a-review-button' onClick={writeAReview}>Write a review</button> : ""}
+          </div>
+          <div className='show-page-review-index-wrapper'>
+            <ReviewIndex listing={listing}/>
+          </div>
+        </div>
+        
+        <div className='long-placeholder'> 
+            <img className='show-page-map-wrapper' src="https://castlebnb-seeds.s3.amazonaws.com/westeros.jpeg" alt="map_of_westeros" />
+        </div>
         <div className='long-placeholder'> Host Info placeholder </div>
         
       </div>

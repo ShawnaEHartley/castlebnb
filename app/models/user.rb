@@ -25,6 +25,11 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..255 }, allow_nil: true
   validates :session_token, presence: true, uniqueness: true
 
+  has_many :reviews,
+    foreign_key: :user_id,
+    class_name: :Review
+
+
   attr_reader :password
 
   def password=(new_pw)
@@ -69,9 +74,6 @@ class User < ApplicationRecord
     self.update!(session_token: generate_session_token)
     self.session_token
   end
-
-
-
 
 
 end

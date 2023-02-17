@@ -19,8 +19,10 @@
     "url": "https://github.com/ShawnaEHartley/CastleBnB/issues"
   },
   "homepage": "https://github.com/ShawnaEHartley/CastleBnB#readme",
-
   "engines": {
     "node": "16.x"
+  },
+  "dependencies": {
+    "react-star-rating-component": "^1.4.1"
   }
 }
