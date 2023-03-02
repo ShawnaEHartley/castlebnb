@@ -10,7 +10,6 @@ class Api::SessionsController < ApplicationController
   end
 
   def create
-    puts params
     email = params[:email]
     password = params[:password]
     @user = User.find_by_credentials(email, password)

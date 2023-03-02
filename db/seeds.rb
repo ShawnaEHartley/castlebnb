@@ -429,7 +429,7 @@ ApplicationRecord.transaction do
 
   Review.create!(
     listing_id: 1,
-    user_id: 10,
+    user_id: 7,
     cleanliness_rating: 5,
     communication_rating: 5,
     checkin_rating: 5,
