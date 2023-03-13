@@ -6,14 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import Navigation from '../Navigation/Navigation'
 import * as sessionActions from '../../store/session';
 import SignUpPage from '../UserAuthModal/SignUpPage.js';
-import LogInFormPage from '../UserAuthModal/LoginFormPage.js';
 import { closeModalHandler } from '../../store/modal';
 
 
 import icon from '../../assets/images/castle_icon.png';
-import github from '../../assets/images/icons8-github-30.png';
-import linkedin from '../../assets/images/icons8-linkedin-circled-30.png';
-import angellist from '../../assets/images/icons8-angellist-30.png';
 import globe from '../../assets/images/icons8-earth-globe-30.png';
 import menu from '../../assets/images/icons8-menu-rounded-30.png';
 import profile from '../../assets/images/icons8-customer-30.png';

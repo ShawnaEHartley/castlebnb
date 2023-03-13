@@ -4,7 +4,7 @@
   border-style: solid;
   border-color: rgb(244, 236, 236);
   border-radius: 10px;
-  height: 100px;
+  height: 120px;
   padding: 10px;
 }
 
@@ -30,8 +30,10 @@
   line-height: 22px;
 }
 
-
-
-
-.review-index-item- {}
-.review-index-item- {}
+.review-index-item-show-more-button {
+  border: none;
+  background-color: white;
+  padding: 0;
+  margin: 5px 0px;
+  font-size: 16px;
+};
