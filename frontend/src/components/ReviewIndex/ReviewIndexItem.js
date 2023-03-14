@@ -13,7 +13,7 @@ const ReviewIndexItem = ({review}) => {
         <div className='review-index-item-rating-each'>{review.locationRating}</div>
         <div className='review-index-item-rating-each'>{review.valueRating}</div>
       </div> */}
-      <div className='review-index-item-body'>{review.body}</div>
+      <div className='review-index-item-body'>{review.body} </div>
     </div>
   )
 };

@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "express": "^4.18.2",
+    "react-show-more-text": "^1.6.2",
     "react-star-rating-component": "^1.4.1"
   },
   "main": "index.js"
