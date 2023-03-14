@@ -4,7 +4,7 @@
   border-style: solid;
   border-color: rgb(244, 236, 236);
   border-radius: 10px;
-  height: 120px;
+  height: 130px;
   padding: 10px;
 }
 
@@ -24,8 +24,8 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  overflow: hidden;
-  overflow-y: 3;
+  overflow: scroll;
+  /* overflow-y: 3; */
   font-size: 16px;
   line-height: 22px;
 }
@@ -34,6 +34,6 @@
   border: none;
   background-color: white;
   padding: 0;
-  margin: 5px 0px;
+  margin: 15px 0px;
   font-size: 16px;
 };
