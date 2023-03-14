@@ -66,7 +66,7 @@ const ListingShow = () => {
 
   const writeAReview = () => {
     dispatch({type: 'modalOn', component: 'showReviewForm'})
-  }
+  };
 
   return (
     <>
@@ -87,12 +87,14 @@ const ListingShow = () => {
             <img src={star} alt="star" className='icon subtitle-left-item' id='show-icon-star' />
             <div className='icon-text subtitle-left-item' id='show-icon-rating-text'>4.76</div>
             <span className='subtitle-left-item'>·</span>
-            <div className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</div>
+            <a href='#show-page-review-wrapper' className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</a>
+            {/* <div className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</div> */}
             <span className='subtitle-left-item'>·</span>
             <img src={badge} alt="badge" className='icon subtitle-left-item' id='show-icon-badge' />
             <div className='icon-text subtitle-left-item' id='show-icon-host-text'>Superhost</div>
             <span className='subtitle-left-item'>·</span>
-            <h2 className='location subtitle-left-item'>{listing.city}, {listing.region}</h2>
+            <a href='#show-page-map-wrapper' className='location subtitle-left-item'>{listing.city}, {listing.region}</a>
+            {/* <h2 className='location subtitle-left-item'>{listing.city}, {listing.region}</h2> */}
           </div>
 
           <div className='subtitle-right'>
@@ -194,8 +196,8 @@ const ListingShow = () => {
           </div>
         </div>
         
-        <div className='long-placeholder'> 
-            <img className='show-page-map-wrapper' src="https://castlebnb-seeds.s3.amazonaws.com/westeros.jpeg" alt="map_of_westeros" />
+        <div className='long-placeholder' id='show-page-map-wrapper'> 
+            <img className='show-page-map-image' src="https://castlebnb-seeds.s3.amazonaws.com/westeros.jpeg" alt="map_of_westeros" />
         </div>
         <div className='long-placeholder'> Host Info placeholder </div>
         
