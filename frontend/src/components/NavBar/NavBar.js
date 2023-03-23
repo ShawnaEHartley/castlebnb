@@ -71,7 +71,7 @@ function NavBar() {
         <span className='logo-title'>castlebnb</span>
       </div>
       <div id='header_center'>
-        <div>Anywhere | Any week | Add guests</div>
+        <div>Any Place | Any Week | Add Guests</div>
       </div>
       <div id='header_right'>
         <span className='personal-links'>
