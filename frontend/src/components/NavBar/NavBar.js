@@ -3,10 +3,13 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// import RNPickerSelect from 'react-native-picker-select';
+
 import Navigation from '../Navigation/Navigation'
 import * as sessionActions from '../../store/session';
 import SignUpPage from '../UserAuthModal/SignUpPage.js';
 import { closeModalHandler } from '../../store/modal';
+
 
 
 import icon from '../../assets/images/castle_icon.png';
@@ -61,6 +64,24 @@ function NavBar() {
     history.push('/')
   };
 
+
+  const openPersonalLinkModal = () => {
+    dispatch({type: 'modalOn', component: 'personalLink'})
+  }
+
+  const portfolio = () => {
+    window.open('shawna.dev', '_blank')
+  };
+  const github = () => {
+    window.open('shawna.dev', '_blank')
+  };
+  const linkedin = () => {
+    window.open('shawna.dev', '_blank')
+  };
+  const angelist = () => {
+    window.open('shawna.dev', '_blank')
+  };
+
   return (
     <>
     { modalState.on ? <div className='modal-background' onClick={()=>{dispatch(closeModalHandler())}}></div> : "" }
@@ -71,16 +92,26 @@ function NavBar() {
         <span className='logo-title'>castlebnb</span>
       </div>
       <div id='header_center'>
-        <div>Any Place | Any Week | Add Guests</div>
+        <div>Anywhere | Any week | Add guests</div>
       </div>
       <div id='header_right'>
-        <span className='personal-links'>
+        <div className='personal-links' >
           <p>Personal links</p>
-          <img src={globe} alt="" />
+          <img src={globe} alt="globe" />
           {/* <img src={github} alt="" />
           <img src={linkedin} alt="" />
           <img src={angellist} alt="" /> */}
-        </span>
+
+          {/* <RNPickerSelect
+            items={[
+              {label: 'Portfolio', value:{portfolio} },
+              {label: 'GitHub', value:{github} },
+              {label: 'LinkedIn', value:{linkedin} },
+              {label: 'AngelList', value:{angelist} }
+            ]} */}
+
+          {/* /> */}
+        </div>
           <div className='profile-nav-icon' onClick={toggleProfileHandler}>
             <img id='menu-icon' src={menu} alt="" />
             <img id='profile-icon' src={profile} alt="" />

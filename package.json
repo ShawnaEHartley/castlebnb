@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "express": "^4.18.2",
+    "react-native-picker-select": "^8.0.4",
     "react-show-more-text": "^1.6.2",
     "react-star-rating-component": "^1.4.1"
   },
