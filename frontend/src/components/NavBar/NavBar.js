@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-// import RNPickerSelect from 'react-native-picker-select';
+import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
+import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/transitions/slide.css';
 
 import Navigation from '../Navigation/Navigation'
 import * as sessionActions from '../../store/session';
@@ -64,24 +66,6 @@ function NavBar() {
     history.push('/')
   };
 
-
-  const openPersonalLinkModal = () => {
-    dispatch({type: 'modalOn', component: 'personalLink'})
-  }
-
-  const portfolio = () => {
-    window.open('shawna.dev', '_blank')
-  };
-  const github = () => {
-    window.open('shawna.dev', '_blank')
-  };
-  const linkedin = () => {
-    window.open('shawna.dev', '_blank')
-  };
-  const angelist = () => {
-    window.open('shawna.dev', '_blank')
-  };
-
   return (
     <>
     { modalState.on ? <div className='modal-background' onClick={()=>{dispatch(closeModalHandler())}}></div> : "" }
@@ -95,23 +79,17 @@ function NavBar() {
         <div>Anywhere | Any week | Add guests</div>
       </div>
       <div id='header_right'>
-        <div className='personal-links' >
-          <p>Personal links</p>
-          <img src={globe} alt="globe" />
-          {/* <img src={github} alt="" />
-          <img src={linkedin} alt="" />
-          <img src={angellist} alt="" /> */}
-
-          {/* <RNPickerSelect
-            items={[
-              {label: 'Portfolio', value:{portfolio} },
-              {label: 'GitHub', value:{github} },
-              {label: 'LinkedIn', value:{linkedin} },
-              {label: 'AngelList', value:{angelist} }
-            ]} */}
-
-          {/* /> */}
-        </div>
+        <Menu menuButton={ <MenuButton className="personal-link-menu">
+            <span className='personal-links'>
+              <p>Personal links</p>
+              <img src={globe} alt="globe" />
+            </span>
+          </MenuButton> }>
+          <MenuItem href='http://shawna.dev' target='_blank'>Personal Site</MenuItem>
+          <MenuItem href='http://gh.io/shawna' target='_blank'>GitHub</MenuItem>
+          <MenuItem href='https://www.linkedin.com/in/shawna-e-hartley/' target='_blank'>LinkedIn</MenuItem>
+          <MenuItem href='https://angel.co/u/shawna-hartley' target='_blank'>AngelList</MenuItem>
+        </Menu>
           <div className='profile-nav-icon' onClick={toggleProfileHandler}>
             <img id='menu-icon' src={menu} alt="" />
             <img id='profile-icon' src={profile} alt="" />
