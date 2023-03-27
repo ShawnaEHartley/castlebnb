@@ -40,6 +40,11 @@
   font-size: 14px;
 }
 
+.personal-link-menu {
+  border: none;
+  background: none;
+}
+
 .personal-links {
   display: flex;
   align-items: center;
