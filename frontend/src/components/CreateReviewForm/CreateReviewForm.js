@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import StarRatingComponent from 'react-star-rating-component';
 import { closeModalHandler } from '../../store/modal';
-import { createReview } from '../../store/reviews';
+import { createReview } from '../../store/listings';
 import './CreateReviewForm.css';
 
 
@@ -32,8 +32,10 @@ const CreateReviewForm = ({listing}) => {
         value_rating: value,
         body: body
       }));
-      dispatch(closeModalHandler());
-    };
+
+      // Future implementation - close modal after we get a response from the backend that the review has been posted
+    dispatch(closeModalHandler());
+  };
 
 
   return (

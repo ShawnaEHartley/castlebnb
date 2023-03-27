@@ -20,7 +20,7 @@ export const rootReducer = combineReducers({
   session,
   modal,
   listings,
-  reviews, 
+  // reviews, 
 });
 
 const configureStore = (preloadedState) => {

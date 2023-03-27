@@ -5,7 +5,11 @@ class Api::ReviewsController < ApplicationController
 
     if !@review.save
       render json: { errors: @review.errors.full_messages }, status: 422
+    # else 
+    #   render json
     end
+
+
   end
 
   def destroy

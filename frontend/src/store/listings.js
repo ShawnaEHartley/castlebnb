@@ -2,6 +2,7 @@ import csrfFetch from './csrf';
 
 export const RECEIVE_LISTING = 'listings/RECEIVE_LISTING';
 export const RECEIVE_LISTINGS = 'listings/RECEIVE_LISTINGS';
+export const RECEIVE_REVIEW = 'listings/RECEIVE_REVIEW';
 
 const receiveListing = listing => {
   return {
@@ -53,6 +54,21 @@ export const fetchListings = () => async dispatch => {
   }
 };
 
+
+export const createReview = (review) => async dispatch => {
+  const res = await csrfFetch(`/api/reviews/`, {
+    method: 'POST',
+    body: JSON.stringify(review)
+  });
+  
+  if (res.ok) {
+    // const data = await res.json();
+    dispatch(fetchListing(review.listing_id));
+  }
+  return res;
+};
+
+
 const listingsReducer = (state = {}, action) => {
   let newState = { ...state };
 
@@ -62,6 +78,10 @@ const listingsReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_LISTINGS:
       return action.payload;
+    case RECEIVE_REVIEW:
+      action.payload.id = 999;
+      newState[action.payload.listing_id].listingReviews.push(action.payload);
+      return newState;
     default:
       return state;
   }
