@@ -7,7 +7,7 @@ import App from './App';
 import configureStore from './store';
 import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
-import { createReview } from './store/reviews';
+import { createReview } from './store/listings';
 
 const store = configureStore();
 

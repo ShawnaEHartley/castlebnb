@@ -29,6 +29,9 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Review
 
+  has_many :reservations,
+    foreign_key: :reserver_id,
+    class_name: :Reservation
 
   attr_reader :password
 
