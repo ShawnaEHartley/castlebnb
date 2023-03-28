@@ -1,5 +1,5 @@
 {
-  "name": "castlebnb",
+  "name": "castlebnb2",
   "version": "1.0.0",
   "description": "Welcome to CastleBnB. This is a clone of AirBnB which features only castle listings around the world. </br> Find your next fairytale adventure here.",
   "directories": {
@@ -23,10 +23,7 @@
     "node": "16.x"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "react-native-picker-select": "^8.0.4",
-    "react-show-more-text": "^1.6.2",
-    "react-star-rating-component": "^1.4.1"
+    "express": "^4.18.2"
   },
   "main": "index.js"
 }

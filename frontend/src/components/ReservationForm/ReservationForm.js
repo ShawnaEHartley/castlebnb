@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { DatePicker } from '@mui/x-date-pickers';
+import dayjs from 'dayjs';
 
 import { getListing } from '../../store/listings';
 import { fetchListing } from '../../store/listings';
@@ -21,7 +23,11 @@ const ReservationForm = () => {
     dispatch(fetchListing(listingId));  
   }, [dispatch, listingId]);
 
-
+  
+  let today = dayjs();
+  const [startDate, setStartDate] = useState(today);
+  let plus5 = startDate.add(5, 'day')
+  const [endDate, setEndDate] = useState(plus5);
 
   return (
     <div className='reservation-section'>
@@ -45,8 +51,24 @@ const ReservationForm = () => {
         <div className='reservation-input-wrapper'>
 
           <div className='reservation-content-dates'>
-            <button className='reservation-button' id='res-checkin-button'>CHECK-IN</button>
-            <button className='reservation-button' id='res-checkout-button'>CHECKOUT</button>
+            {/* <button className='reservation-button' id='res-checkin-button'>CHECK-IN</button> */}
+            {/* <button className='reservation-button' id='res-checkout-button'>CHECKOUT</button> */}
+            <DatePicker
+            className='reservation-button' id='res-checkin-button'
+            value={startDate}
+            onChange={date => {
+              setStartDate(date);
+              if (date.isAfter(endDate)) {
+                setEndDate(date.add(5, 'day'));
+              }
+            }}
+            />
+            <DatePicker
+            className='reservation-button' id='res-checkin-button'
+            value={endDate}
+            onChange={date => setEndDate(date)}
+            />
+
           </div>
           <div className='reservation-guests'>
             <button className='reservation-button' id='res-guests-button'>GUESTS</button>
