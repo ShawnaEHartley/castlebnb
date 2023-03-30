@@ -2,7 +2,6 @@ import csrfFetch from './csrf';
 
 export const RECEIVE_LISTING = 'listings/RECEIVE_LISTING';
 export const RECEIVE_LISTINGS = 'listings/RECEIVE_LISTINGS';
-export const RECEIVE_REVIEW = 'listings/RECEIVE_REVIEW';
 
 const receiveListing = listing => {
   return {
@@ -68,6 +67,27 @@ export const createReview = (review) => async dispatch => {
   return res;
 };
 
+export const deleteReview = (review, listingID) => async dispatch => {
+  const res = await csrfFetch(`/api/reviews/${review.id}`, {
+    method: "DELETE"
+  });
+  if (res.ok) {
+    dispatch(fetchListing(listingID));
+  }
+  return res;
+};
+
+export const createReservation = reservation => async dispatch => {
+  const res = await csrfFetch(`/api/listings/${reservation.listing_id}/reservations/`, {
+    method: 'POST',
+    body: JSON.stringify(reservation)
+  });
+
+  if (res.ok) {
+    dispatch(fetchListing(reservation.listing_id))
+  }
+}
+
 
 const listingsReducer = (state = {}, action) => {
   let newState = { ...state };
@@ -78,10 +98,6 @@ const listingsReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_LISTINGS:
       return action.payload;
-    case RECEIVE_REVIEW:
-      action.payload.id = 999;
-      newState[action.payload.listing_id].listingReviews.push(action.payload);
-      return newState;
     default:
       return state;
   }

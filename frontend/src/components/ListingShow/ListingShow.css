@@ -10,7 +10,7 @@
 }
 
 .title-subtitle-outter-wrapper {
-  margin: 5px 0px 18px 0px;
+  margin: 5px 8px 18px 10px;
 }
 
 .title {
@@ -91,17 +91,20 @@
 
 .picture-wrapper {
   display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 10px;
 }
 
 .show-main-pic-container {
   height: 502px;
-  width: 560px;
+  width: 568px;
 }
 
 .show-main-pic {
   object-fit: cover;
   height: 498px;
-  width: 550px;
+  width: 560px;
   border-radius: 10px 0px 0px 10px;
   margin-right: 10px;
 }
@@ -109,14 +112,14 @@
 .show-images-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 10px;
+  column-gap: 8px;
   row-gap: 5px;
 }
 
 .show-pic {
   object-fit: cover;
   height: 245px;
-  width: 250px;
+  width: 272px;
 }
 
 #listing-show-pic-2 {

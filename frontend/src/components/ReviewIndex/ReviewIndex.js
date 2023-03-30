@@ -12,6 +12,7 @@ const ReviewIndex = ({listing}) => {
           <div>Cleanliness</div>
           <div>
             <StarRatingComponent
+              name='cleanliness'
               value={listing.reviewAverage.cleanlinessRating}
               editing={false}
               starCount={5}
@@ -22,6 +23,7 @@ const ReviewIndex = ({listing}) => {
           <div>Communication</div>
           <div>
             <StarRatingComponent
+              name='communication'
               value={listing.reviewAverage.communicationRating}
               editing={false}
               starCount={5}
@@ -32,6 +34,7 @@ const ReviewIndex = ({listing}) => {
           <div>Check in</div>
           <div>
             <StarRatingComponent
+              name='checkin'
               value={listing.reviewAverage.checkinRating}
               editing={false}
               starCount={5}
@@ -42,6 +45,7 @@ const ReviewIndex = ({listing}) => {
           <div>Accuracy</div>
           <div>
             <StarRatingComponent
+              name='accuracy'
               value={listing.reviewAverage.accuracyRating}
               editing={false}
               starCount={5}
@@ -52,6 +56,7 @@ const ReviewIndex = ({listing}) => {
           <div>Location</div>
           <div>
             <StarRatingComponent
+              name='location'
               value={listing.reviewAverage.locationRating}
               editing={false}
               starCount={5}
@@ -62,6 +67,7 @@ const ReviewIndex = ({listing}) => {
           <div>Value</div>
           <div>
             <StarRatingComponent
+              name='value'
               value={listing.reviewAverage.valueRating}
               editing={false}
               starCount={5}
@@ -69,7 +75,7 @@ const ReviewIndex = ({listing}) => {
           </div>
       </div>
       </div>
-      { listing.listingReviews.map(review => <ReviewIndexItem review={review} key={review.id} />) }
+      { listing.listingReviews.map(review => <ReviewIndexItem review={review} key={review.id} listingID={listing.id} />) }
     </div>
   )
 };

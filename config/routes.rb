@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resource :session, only: [:show, :create, :destroy]
     resources :listings, only: [:index, :show] do
       resources :reviews, only: [:index]
+      resources :reservations, only: [:index, :create, :update, :destroy]
     end
     resources :reviews, only: [:create, :update, :destroy]
   end

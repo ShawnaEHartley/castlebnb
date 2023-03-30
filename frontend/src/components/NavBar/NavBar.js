@@ -2,6 +2,7 @@
 // import { faChessRook, faSearch, faArrowAltCircleUp, faCaretSquareDown, faExclamationTriangle } from '@fortawesome/fontawesome-free-solid'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
@@ -10,9 +11,8 @@ import '@szhsin/react-menu/dist/transitions/slide.css';
 import Navigation from '../Navigation/Navigation'
 import * as sessionActions from '../../store/session';
 import SignUpPage from '../UserAuthModal/SignUpPage.js';
+import LoginFormPage from '../UserAuthModal/LoginFormPage.js';
 import { closeModalHandler } from '../../store/modal';
-
-
 
 import icon from '../../assets/images/castle_icon.png';
 import globe from '../../assets/images/icons8-earth-globe-30.png';
@@ -20,8 +20,6 @@ import menu from '../../assets/images/icons8-menu-rounded-30.png';
 import profile from '../../assets/images/icons8-customer-30.png';
 
 import './NavBar.css'
-import LoginFormPage from '../UserAuthModal/LoginFormPage.js';
-import { useHistory } from 'react-router-dom';
 
 
 

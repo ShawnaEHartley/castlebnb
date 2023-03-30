@@ -15,7 +15,7 @@ class Api::ReviewsController < ApplicationController
   def destroy
     # if current user === author
     @review = Review.find(params[:id])
-    if @review.author_id === current_user.id
+    if @review.user_id === current_user.id
       @review.delete
     end
   end
