@@ -47,6 +47,23 @@ function LoginFormPage(props) {
     )
   };
 
+  const handleDemoSubmit = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(sessionActions.login({ email:"demo@test.com", password:"hello123" }))
+    .catch(async (res) => {
+      let data;
+      try {
+        data = await res.clone().json();
+      } catch {
+        data = await res.text();
+      }
+      if (data?.errors) setErrors(data.errors);
+      else if (data) setErrors([data]);
+      else setErrors([res.statusText]);
+    });
+  }
+
   return (
     <section className='userauth-section'>
       <div className='userauth-header'>
@@ -77,6 +94,7 @@ function LoginFormPage(props) {
               }} />
             </div>
             <button className='user-auth-button' type="submit">Log In</button>
+            <button className="user-auth-button" onClick={handleDemoSubmit}>Demo user</button>
           </form>
         </div>
       </div>
