@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
+import Select from 'react-select';
 
 import { getListing } from '../../store/listings';
 import { fetchListing } from '../../store/listings';
@@ -29,6 +30,15 @@ const ReservationForm = () => {
   let plus5 = startDate.add(5, 'day')
   const [endDate, setEndDate] = useState(plus5);
 
+  const duration = endDate.diff(startDate, 'd', false)
+
+  let values = [];
+  for (let i = 0; i < listing.maxGuests; i++) {
+    const ele = {value: i.toString(), label: i.toString()}  
+    values.push(ele);
+  };
+
+
   return (
     <div className='reservation-section'>
     <div className='reservation-outter-wrapper'>
@@ -42,17 +52,13 @@ const ReservationForm = () => {
           <div className='icon-text subtitle-left-item' id='show-icon-rating-text'>4.76</div>
           <span className='subtitle-left-item'>·</span>
           <a href='#show-page-review-wrapper' className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</a>
-          {/* <div className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</div> */}
         </div>
       </div>
 
       <div className='reservation-content-wrapper'>
         <div className='reservation-content-body'>
         <div className='reservation-input-wrapper'>
-
           <div className='reservation-content-dates'>
-            {/* <button className='reservation-button' id='res-checkin-button'>CHECK-IN</button> */}
-            {/* <button className='reservation-button' id='res-checkout-button'>CHECKOUT</button> */}
             <DatePicker
             className='reservation-button' id='res-checkin-button'
             value={startDate}
@@ -68,7 +74,6 @@ const ReservationForm = () => {
             value={endDate}
             onChange={date => setEndDate(date)}
             />
-
           </div>
           <div className='reservation-guests'>
             <button className='reservation-button' id='res-guests-button'>GUESTS</button>
@@ -82,8 +87,8 @@ const ReservationForm = () => {
 
         <div className='reservation-pricing'>
           <div className='reservation-total-wrapper'>
-            <div className=' res-title reservation-nightly-calc'>${listing.price} x 5 nights</div>
-            <div className='reservation-total-nightly-price'>${listing.price * 5}</div>
+            <div className=' res-title reservation-nightly-calc'>${listing.price} x {duration} nights</div>
+            <div className='reservation-total-nightly-price'>${listing.price * duration}</div>
           </div>
           <div className='reservation-total-wrapper'>
             <div className='res-title reservation-cleaning-title'>Cleaning fee</div>
@@ -96,7 +101,7 @@ const ReservationForm = () => {
           <div className="respage-line"></div>
           <div className='reservation-total-wrapper'>
             <div className="reservation-line-bold">Total before taxes</div>
-            <div className='reservation-total-price'>${listing.price * 6}</div>
+            <div className='reservation-total-price'>${listing.price * (duration + 1)}</div>
           </div>
         </div>
 
