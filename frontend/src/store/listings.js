@@ -68,6 +68,17 @@ export const createReview = (review) => async dispatch => {
   return res;
 };
 
+export const createReservation = reservation => async dispatch => {
+  const res = await csrfFetch('api/reservations/', {
+    method: 'POST',
+    body: JSON.stringify(reservation)
+  });
+
+  if (res.ok) {
+    dispatch(fetchListing(reservation.listing_id))
+  }
+}
+
 
 const listingsReducer = (state = {}, action) => {
   let newState = { ...state };
