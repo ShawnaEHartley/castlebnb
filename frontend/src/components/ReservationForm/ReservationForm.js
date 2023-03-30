@@ -46,7 +46,7 @@ const ReservationForm = () => {
       reserver_id: sessionUser.id,
       start_date: startDate,
       end_date: endDate,
-      num_guests: numGuests 
+      num_guests: parseInt(numGuests["value"])
       }))};
 
 
@@ -107,7 +107,7 @@ const ReservationForm = () => {
           <div className='reservation-guests'>
             <Select 
             className='reservation-button' id='res-guests-button' 
-            onChange={value => setNumGuests(value)}
+            onChange={num => setNumGuests(num)}
             placeholder='GUESTS'
             options={values} 
             />
