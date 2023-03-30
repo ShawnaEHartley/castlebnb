@@ -14,6 +14,7 @@ json.listingReviews @listing.reviews do |review|
   json.valueRating review.value_rating
   json.author do
     json.fullName review.author.full_name
+    json.authorId review.author.id
   end
 end
 

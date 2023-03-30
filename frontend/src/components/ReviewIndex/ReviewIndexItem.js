@@ -1,6 +1,15 @@
+import { useDispatch, useSelector } from "react-redux";
+import { deleteReview } from "../../store/listings";
 import './ReviewIndexItem.css';
 
-const ReviewIndexItem = ({review}) => {
+const ReviewIndexItem = ({review, listingID}) => {
+  const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
+
+  const removeReview = (e) => {
+    e.preventDefault();
+    dispatch(deleteReview(review, listingID));
+  }
 
   return (
     <div className='review-index-item'>
@@ -14,6 +23,7 @@ const ReviewIndexItem = ({review}) => {
         <div className='review-index-item-rating-each'>{review.valueRating}</div>
       </div> */}
       <div className='review-index-item-body'>{review.body} </div>
+      { sessionUser.id === review.author.authorId ? <button onClick={removeReview}>Remove Review</button> : "" }
     </div>
   )
 };

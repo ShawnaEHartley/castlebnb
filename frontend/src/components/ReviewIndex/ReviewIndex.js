@@ -75,7 +75,7 @@ const ReviewIndex = ({listing}) => {
           </div>
       </div>
       </div>
-      { listing.listingReviews.map(review => <ReviewIndexItem review={review} key={review.id} />) }
+      { listing.listingReviews.map(review => <ReviewIndexItem review={review} key={review.id} listingID={listing.id} />) }
     </div>
   )
 };
