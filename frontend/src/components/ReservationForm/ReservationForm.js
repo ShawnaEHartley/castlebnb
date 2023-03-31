@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 import Select from 'react-select';
@@ -19,6 +19,8 @@ const ReservationForm = () => {
   const dispatch = useDispatch();
   const {listingId} = useParams();
   const listing = useSelector(getListing(listingId));
+  const history = useHistory();
+
   const sessionUser = useSelector(state => state.session.user);
   
   useEffect(()=> {
@@ -30,7 +32,7 @@ const ReservationForm = () => {
   let plus5 = startDate.add(5, 'day')
   const [endDate, setEndDate] = useState(plus5);
 
-  const duration = endDate.diff(startDate, 'd', false)
+  const duration = endDate.diff(startDate, 'd', false);
 
   const [numGuests, setNumGuests] = useState(0)
   let values = [];
@@ -40,14 +42,14 @@ const ReservationForm = () => {
   };
 
   const reserve = (e) => {
-      e.preventDefault();
-      dispatch(createReservation({
+    e.preventDefault();
+    dispatch(createReservation(history, {
       listing_id: listing.id,
       reserver_id: sessionUser.id,
       start_date: startDate,
       end_date: endDate,
       num_guests: parseInt(numGuests["value"])
-      }))};
+    }))};
 
 
   const modalState = useSelector((state)=>{

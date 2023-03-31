@@ -1,9 +1,8 @@
 import { Route, Switch } from 'react-router-dom';
-import NavBar from './components/NavBar/NavBar';
+
 import SplashPage from './components/SplashPage/SplashPage.js';
-import SignUpPage from './components/UserAuthModal/SignUpPage';
-import LoginFormPage from './components/UserAuthModal/LoginFormPage';
 import ListingShow from './components/ListingShow/ListingShow';
+import ConfirmationPage from './components/ReservationForm/ConfirmationPage';
 
 function App() {
   return (
@@ -11,6 +10,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={SplashPage} />
         <Route exact path="/listings/:listingId" component={ListingShow} />
+        <Route exact path="/reservations/:reservationId/confirmation" component={ConfirmationPage} />
       </Switch>
     </>
   );

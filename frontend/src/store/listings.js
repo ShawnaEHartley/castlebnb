@@ -1,5 +1,6 @@
 import csrfFetch from './csrf';
 
+
 export const RECEIVE_LISTING = 'listings/RECEIVE_LISTING';
 export const RECEIVE_LISTINGS = 'listings/RECEIVE_LISTINGS';
 
@@ -35,7 +36,7 @@ export const getListings = state => {
 
 export const fetchListing = listingId => async dispatch => {
   const res = await csrfFetch(`/api/listings/${listingId}`);
-
+  
   if (res.ok) {
     const data = await res.json();
     dispatch(receiveListing(data));
@@ -45,7 +46,7 @@ export const fetchListing = listingId => async dispatch => {
 
 export const fetchListings = () => async dispatch => {
   const res = await csrfFetch(`/api/listings`);
-
+  
   if (res.ok) {
     const data = await res.json();
     dispatch(receiveListings(data.listings));
@@ -77,15 +78,17 @@ export const deleteReview = (review, listingID) => async dispatch => {
   return res;
 };
 
-export const createReservation = reservation => async dispatch => {
+export const createReservation = (history, reservation) => async dispatch => {
   const res = await csrfFetch(`/api/listings/${reservation.listing_id}/reservations/`, {
     method: 'POST',
     body: JSON.stringify(reservation)
   });
-
+  
   if (res.ok) {
-    dispatch(fetchListing(reservation.listing_id))
+    const data = await res.json();
+    history.push(`/reservations/${data.id}/confirmation`);
   }
+  return res;
 }
 
 

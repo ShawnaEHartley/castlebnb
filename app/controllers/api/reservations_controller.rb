@@ -4,7 +4,9 @@ class Api::ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
 
     if !@reservation.save
-      render json: { errors: @reservation.errors.full_messages }, status: 422
+      render json: { errors: @reservation.errors.full_messages }, status: 404
+    else
+      render 'api/reservations/confirmation'
     end
   end
 

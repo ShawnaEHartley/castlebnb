@@ -23,7 +23,7 @@ const ReviewIndexItem = ({review, listingID}) => {
         <div className='review-index-item-rating-each'>{review.valueRating}</div>
       </div> */}
       <div className='review-index-item-body'>{review.body} </div>
-      { sessionUser.id === review.author.authorId ? <button onClick={removeReview}>Remove Review</button> : "" }
+      { sessionUser && sessionUser.id === review.author.authorId ? <button onClick={removeReview}>Remove Review</button> : "" }
     </div>
   )
 };
