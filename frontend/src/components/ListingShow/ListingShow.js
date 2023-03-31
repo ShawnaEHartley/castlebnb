@@ -16,6 +16,7 @@ import NavBar from "../NavBar/NavBar";
 import ReservationForm from '../ReservationForm/ReservationForm';
 import CreateReviewForm from '../CreateReviewForm/CreateReviewForm';
 import ReviewIndex from '../ReviewIndex/ReviewIndex';
+import MapWrapper from '../Map/Map';
 
 
 const ListingShow = () => {
@@ -197,7 +198,8 @@ const ListingShow = () => {
         </div>
         
         <div className='long-placeholder' id='show-page-map-wrapper'> 
-            <img className='show-page-map-image' src="https://castlebnb-seeds.s3.amazonaws.com/westeros.jpeg" alt="map_of_westeros" />
+            {/* <img className='show-page-map-image' src="https://castlebnb-seeds.s3.amazonaws.com/westeros.jpeg" alt="map_of_westeros" /> */}
+            <MapWrapper />
         </div>
         {/* <div className='long-placeholder'> Host Info placeholder </div> */}
         

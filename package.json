@@ -23,6 +23,7 @@
     "node": "16.x"
   },
   "dependencies": {
+    "@googlemaps/react-wrapper": "^1.1.35",
     "express": "^4.18.2"
   },
   "main": "index.js"

@@ -311,7 +311,7 @@
 
 .show-page-map-image {
   height: 380px;
-  width: 98%;
+  width: 400px;
   object-fit: cover;
   border-radius: 10px;
 }
