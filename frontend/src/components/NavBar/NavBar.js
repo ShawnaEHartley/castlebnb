@@ -73,9 +73,9 @@ function NavBar() {
         <img src={icon} alt="" />
         <span className='logo-title'>castlebnb</span>
       </div>
-      <div id='header_center'>
-        <div>Anywhere | Any week | Add guests</div>
-      </div>
+      {/* <div id='header_center'> */}
+        {/* <div>Anywhere | Any week | Add guests</div> */}
+      {/* </div> */}
       <div id='header_right'>
         <Menu menuButton={ <MenuButton className="personal-link-menu">
             <span className='personal-links'>

@@ -65,7 +65,11 @@ class Api::ListingsController < ApplicationController
   end
 
   def show
-    @listing = Listing.find(params[:id])
+    @listing = Listing.find_by(id: params[:id])
+    if !@listing 
+      render json: { errors: 'unable to find listing' }, status: 404 
+      return
+    end
     reviews = @listing.reviews
     average_cleanliness(reviews)
     average_communication(reviews)
