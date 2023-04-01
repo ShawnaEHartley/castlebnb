@@ -30,10 +30,16 @@
   line-height: 22px;
 }
 
-.review-index-item-show-more-button {
+.review-author-buttons {
+  margin: 5px 0px 5px 0px;
+}
+
+.review-author-buttons button {
+  border-radius: 5px;
   border: none;
-  background-color: white;
-  padding: 0;
-  margin: 15px 0px;
-  font-size: 16px;
-};
+  background-color: #660c14;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 2px;
+  padding: 3px 7px;
+}

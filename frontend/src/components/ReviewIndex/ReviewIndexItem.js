@@ -13,7 +13,7 @@ const ReviewIndexItem = ({review, listingID}) => {
   });
 
   const modalComponent = () => {
-    if (modalState.component === 'updateReviewForm') {
+    if (modalState.component === 'updateReviewForm' && modalState.reviewId === review.id) {
       return (
         <UpdateReviewForm review={review}/>
       )
@@ -26,7 +26,7 @@ const ReviewIndexItem = ({review, listingID}) => {
   };
 
   const updateReviewForm = () => {
-    dispatch({type: 'modalOn', component: 'updateReviewForm'})
+    dispatch({type: 'modalOn', component: 'updateReviewForm', reviewId: review.id})
   }
 
   return (
@@ -43,7 +43,7 @@ const ReviewIndexItem = ({review, listingID}) => {
         <div className='review-index-item-rating-each'>{review.valueRating}</div>
       </div> */}
       <div className='review-index-item-body'>{review.body} </div>
-      { sessionUser && sessionUser.id === review.author.authorId ? <div><button onClick={removeReview}>Remove Review</button> <button onClick={updateReviewForm}>Update Review</button> </div>: "" }
+      { sessionUser && sessionUser.id === review.author.authorId ? <div className='review-author-buttons'><button onClick={removeReview}>Remove Review</button> <button onClick={updateReviewForm}>Update Review</button> </div>: "" }
     </div>
   )
 };

@@ -17,7 +17,7 @@ const UpdateReviewForm = ({review}) => {
 
   const [cleanliness, setCleanliness] = useState(review.cleanlinessRating);
   const [communication, setCommunication] = useState(review.communicationRating);
-  const [checkin, setCheckin] = useState(review.checkingRating);
+  const [checkin, setCheckin] = useState(review.checkinRating);
   const [accuracy, setAccuracy] = useState(review.accuracyRating);
   const [location, setLocation] = useState(review.locationRating);
   const [value, setValue] = useState(review.valueRating);

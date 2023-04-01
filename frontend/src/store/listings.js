@@ -85,7 +85,7 @@ export const updateReview = (review) => async dispatch => {
   });
 
   if (res.ok) {
-    dispatch(fetchListing(review.listing_id))
+    dispatch(fetchListing(review.listingId))
   }
   return res;
 };
