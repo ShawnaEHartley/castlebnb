@@ -1,31 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 import Select from 'react-select';
 
 import LoginFormPage from '../UserAuthModal/LoginFormPage.js';
 import { closeModalHandler } from '../../store/modal';
-import { getListing, fetchListing, createReservation } from '../../store/listings';
+import { createReservation } from '../../store/listings';
 
 import star from '../../assets/images/icons8-star-filled-100.png';
 
 import './ReservationForm.css';
 
 
-const ReservationForm = () => {
+const ReservationForm = ({listing}) => {
   
   const dispatch = useDispatch();
-  const {listingId} = useParams();
-  const listing = useSelector(getListing(listingId));
   const history = useHistory();
-
   const sessionUser = useSelector(state => state.session.user);
-  
-  useEffect(()=> {
-    dispatch(fetchListing(listingId));  
-  }, [dispatch, listingId]);
   
   let today = dayjs();
   const [startDate, setStartDate] = useState(today);
