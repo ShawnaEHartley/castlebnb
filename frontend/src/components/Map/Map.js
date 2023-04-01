@@ -1,5 +1,5 @@
-import { Wrapper, Status } from '@googlemaps/react-wrapper';
-import { useEffect, useRef, useState } from 'react';
+import { Wrapper } from '@googlemaps/react-wrapper';
+import { useEffect, useRef } from 'react';
 
 import './Map.css';
 
@@ -19,9 +19,6 @@ function MyMapComponent({ center, title }) {
       title: title
     })
   }, [center, zoom, title]);
-
-  console.log(center)
-
   return <div ref={ref} id="map" />;
 }
 
