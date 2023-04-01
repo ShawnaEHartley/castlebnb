@@ -198,8 +198,8 @@ const ListingShow = () => {
         </div>
         
         <div className='long-placeholder' id='show-page-map-wrapper'> 
-            {/* <img className='show-page-map-image' src="https://castlebnb-seeds.s3.amazonaws.com/westeros.jpeg" alt="map_of_westeros" /> */}
-            <MapWrapper />
+            <img className='show-page-map-image' src="https://castlebnb-seeds.s3.amazonaws.com/westeros.jpeg" alt="map_of_westeros" />
+            {/* <MapWrapper /> */}
         </div>
         {/* <div className='long-placeholder'> Host Info placeholder </div> */}
         

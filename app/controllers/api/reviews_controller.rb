@@ -5,18 +5,20 @@ class Api::ReviewsController < ApplicationController
 
     if !@review.save
       render json: { errors: @review.errors.full_messages }, status: 422
-    # else 
-    #   render json
     end
-
-
   end
 
   def destroy
-    # if current user === author
     @review = Review.find(params[:id])
     if @review.user_id === current_user.id
       @review.delete
+    end
+  end
+
+  def update 
+    @review = Review.find(params[:id])
+    if @review.user_id === current_user.id
+      @review.update(review_params)
     end
   end
 
