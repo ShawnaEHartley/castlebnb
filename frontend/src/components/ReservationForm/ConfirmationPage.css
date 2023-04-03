@@ -1,0 +1,38 @@
+.confirmation-wrapper {
+  height: 300px;
+  width: 500px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(244, 236, 236);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirmation-header {
+  font-size: 28px;
+  margin: 10px;
+}
+
+.confirmation-text {
+  margin: 5px;
+}
+
+.confirmation-subheader {
+  font-size: 20px;
+  margin: 5px;
+}
+
+.confirmation-button {
+  width: 310px;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  background-color: #660c14;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-top: 40px;
+}

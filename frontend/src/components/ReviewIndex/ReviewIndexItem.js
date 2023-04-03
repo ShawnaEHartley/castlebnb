@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteReview, updateReview } from "../../store/listings";
+import { deleteReview } from "../../store/listings";
 import { closeModalHandler } from '../../store/modal';
 import UpdateReviewForm from "../CreateReviewForm/UpdateReviewFrom";
 import './ReviewIndexItem.css';

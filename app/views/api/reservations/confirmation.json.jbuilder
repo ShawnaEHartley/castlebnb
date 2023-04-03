@@ -1,1 +1,1 @@
-json.merge! @reservation.attributes
+json.reservationId @reservation.id

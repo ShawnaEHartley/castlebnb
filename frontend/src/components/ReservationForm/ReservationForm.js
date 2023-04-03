@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import Select from 'react-select';
 
 import LoginFormPage from '../UserAuthModal/LoginFormPage.js';
-import { closeModalHandler } from '../../store/modal';
+import { closeModalHandler } from '../../store/modal.js';
 import { createReservation } from '../../store/listings';
 
 import star from '../../assets/images/icons8-star-filled-100.png';
@@ -56,12 +56,10 @@ const ReservationForm = ({listing}) => {
   const modalComponent = () => {
     if (modalState.component === 'login') {
       return <LoginFormPage />;
-    }
-  };
+    }};
 
   return (
     <>
-
     { modalState.on ? <div className='modal-background' onClick={()=>{dispatch(closeModalHandler())}}></div> : "" }
     { modalState.on ? <div className='modal-wrapper'>{ modalComponent() }</div> : "" }
     <div className='reservation-section'>
@@ -97,6 +95,7 @@ const ReservationForm = ({listing}) => {
             className='reservation-button' id='res-checkin-button'
             value={endDate}
             onChange={date => setEndDate(date)}
+            minDate={startDate}
             />
           </div>
           <div className='reservation-guests'>
@@ -109,7 +108,7 @@ const ReservationForm = ({listing}) => {
           </div>
         </div>
           <div className='reserve-button-wrapper'>
-          { sessionUser ? <button className='reserve-button' onClick={reserve} >Reserve</button> : <button className='reserve-button' onClick={logInModalHandler} >Sign In to Reserve</button> }
+          { sessionUser ? <button type="button" className='reserve-button' onClick={reserve} >Reserve</button> : <button className='reserve-button' onClick={logInModalHandler} >Sign In to Reserve</button> }
             {/* <button className='reserve-button' onClick={reserve} >Reserve</button> */}
           </div>
           <div className='reservation-subtext'>You won't be charged yet</div>

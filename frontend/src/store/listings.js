@@ -98,7 +98,7 @@ export const createReservation = (history, reservation) => async dispatch => {
   
   if (res.ok) {
     const data = await res.json();
-    history.push(`/reservations/${data.id}/confirmation`);
+    history.push(`/reservations/${data.reservationId}/confirmation`);
   }
   return res;
 }
@@ -114,7 +114,7 @@ const listingsReducer = (state = {}, action) => {
     case RECEIVE_LISTINGS:
       return action.payload;
     default:
-      return state;
+      return newState;
   }
 };
 

@@ -1,5 +1,17 @@
 class Api::ReservationsController < ApplicationController
 
+
+  def show 
+    @reservation = Reservation.find_by(id: params[:id])
+
+    if !@reservation 
+      render json: {errors: 'unable to find reservation'}, status: 404
+      return
+    else 
+      render 'api/reservations/show'
+    end
+  end
+
   def create 
     @reservation = Reservation.new(reservation_params)
 
