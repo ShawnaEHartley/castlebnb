@@ -32,13 +32,15 @@ const ConfirmationPage = () => {
   const date = `${month}/${day}/${year}`
 
   return (
-    <div className='confirmation-wrapper'>
-      <div className='confirmation-text'>{reservation.reserver.name} - you have great taste</div>
-      <div className='confirmation-header'>You are confirmed!</div>
-      <div className='confirmation-text'>We look forward to welcoming you to </div>
-      <div className='confirmation-subheader'>{reservation.listing.title}</div>
-      <div className='confirmation-text'>on {date}</div>
-      <button className='confirmation-button' onClick={returnHome}>Find another stay</button>
+    <div className='confirmation-page'>
+      <div className='confirmation-wrapper'>
+        <div className='confirmation-text'>{reservation.reserver.name} - you have great taste</div>
+        <div className='confirmation-header'>You are confirmed!</div>
+        <div className='confirmation-text'>We look forward to welcoming you to </div>
+        <div className='confirmation-subheader'>{reservation.listing.title}</div>
+        <div className='confirmation-text'>on {date}</div>
+        <button className='confirmation-button' onClick={returnHome}>Find another stay</button>
+      </div>
     </div>
   )
 };

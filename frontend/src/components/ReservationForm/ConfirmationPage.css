@@ -1,3 +1,11 @@
+.confirmation-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+}
+
 .confirmation-wrapper {
   height: 300px;
   width: 500px;
