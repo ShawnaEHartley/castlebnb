@@ -40,8 +40,7 @@ class Api::ReservationsController < ApplicationController
       :listing_id,
       :reserver_id,
       :start_date,
-      :end_date,
-      :num_guests
+      :end_date
     )
   end
 end

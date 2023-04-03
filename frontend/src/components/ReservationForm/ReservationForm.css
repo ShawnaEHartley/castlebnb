@@ -71,6 +71,11 @@
   margin-left: 10px;
 }
 
+.reserve-button:disabled {
+  background-color: gray;
+  cursor: auto;
+}
+
 .reservation-subtext {
   margin: 20px 0px 20px 65px;
   font-size: 14px;

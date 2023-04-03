@@ -34,14 +34,19 @@ const ReservationForm = ({listing}) => {
     values.push(ele);
   };
 
+  const isDisabled = () => {
+    return numGuests === 0
+  }
+
+  console.log(numGuests)
+
   const reserve = (e) => {
     e.preventDefault();
     dispatch(createReservation(history, {
       listing_id: listing.id,
       reserver_id: sessionUser.id,
       start_date: startDate,
-      end_date: endDate,
-      num_guests: parseInt(numGuests["value"])
+      end_date: endDate
     }))};
 
 
@@ -108,8 +113,7 @@ const ReservationForm = ({listing}) => {
           </div>
         </div>
           <div className='reserve-button-wrapper'>
-          { sessionUser ? <button type="button" className='reserve-button' onClick={reserve} >Reserve</button> : <button className='reserve-button' onClick={logInModalHandler} >Sign In to Reserve</button> }
-            {/* <button className='reserve-button' onClick={reserve} >Reserve</button> */}
+          { sessionUser ? <button type="button" disabled={isDisabled()} className='reserve-button' onClick={reserve} >Reserve</button> : <button className='reserve-button' onClick={logInModalHandler} >Sign In to Reserve</button> }
           </div>
           <div className='reservation-subtext'>You won't be charged yet</div>
         </div>
