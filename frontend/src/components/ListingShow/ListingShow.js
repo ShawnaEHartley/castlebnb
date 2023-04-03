@@ -184,7 +184,7 @@ const ListingShow = () => {
         </div>
 
         <div className='reservation-wrapper'> 
-          <ReservationForm />
+          <ReservationForm listing={listing}/>
         </div>
         </div>
 
@@ -198,8 +198,8 @@ const ListingShow = () => {
         </div>
         
         <div className='long-placeholder' id='show-page-map-wrapper'> 
-            <img className='show-page-map-image' src="https://castlebnb-seeds.s3.amazonaws.com/westeros.jpeg" alt="map_of_westeros" />
-            {/* <MapWrapper /> */}
+            {/* <img className='show-page-map-image' src="https://castlebnb-seeds.s3.amazonaws.com/westeros.jpeg" alt="map_of_westeros" /> */}
+            <MapWrapper center={{lat: parseInt(listing.latitude), lng: parseInt(listing.longitude)}} title={listing.title}/>
         </div>
         {/* <div className='long-placeholder'> Host Info placeholder </div> */}
         

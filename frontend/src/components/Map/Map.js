@@ -1,34 +1,32 @@
 import { Wrapper } from '@googlemaps/react-wrapper';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+
 import './Map.css';
 
-const Map = ({listings, mapOptions = {}, mapEventHandlers = {}, markerEventHandlers = {}}) => {
-  const [map, setMap] = useState(null);
-  const mapRef = useRef(null);
+function MyMapComponent({ center, title }) {
+  const ref = useRef(null);
+  const zoom = 6;
 
   useEffect(() => {
-    if (!map) {
-      setMap(new window.google.maps.Map(mapRef.current, {
-        center: {
-          lat: 52.7901,
-          lng: -0.1557
-        },
-        zoom: 13,
-        ...mapOptions
-      }))
-    }
-  }, [mapRef, map, mapOptions])
+    const myMap = new window.google.maps.Map(ref.current, {
+      center,
+      zoom,
+    });
 
-  return (
-    <div ref={mapRef} className='map' >Map</div>
-  )
-};
+    new window.google.maps.Marker({
+      position: center,
+      map: myMap,
+      title: title
+    })
+  }, [center, zoom, title]);
+  return <div ref={ref} id="map" />;
+}
 
 const MapWrapper = (props) => {
 
   return (
     <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
-      <Map {...props} />
+      <MyMapComponent {...props} />
     </Wrapper>
   )
 };
