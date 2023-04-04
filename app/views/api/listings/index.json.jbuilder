@@ -8,7 +8,10 @@ json.listings do
       :city,
       :region,
       :price,
-      :subtitle
+      :subtitle,
+      :latitude,
+      :longitude,
+      :title
       # json.photoUrls listing.photos.attached? ? url_for(listing.photos) : "https://castlebnb-seeds.s3.amazonaws.com/aircover.png"
       json.photoUrl listing.photos.map { |file| url_for(file) }
 

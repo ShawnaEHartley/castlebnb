@@ -1,5 +1,4 @@
 #mappage {
   width: 100vw;
-  height: 100vh;
-  background-color: green;
+  height: calc(100vh - 60px);
 }
