@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import session from './session';
 import modal from './modal';
 import listings from './listings';
+import reservations from './reservations';
 
 let enhancer;
 
@@ -19,6 +20,7 @@ export const rootReducer = combineReducers({
   session,
   modal,
   listings,
+  reservations
 });
 
 const configureStore = (preloadedState) => {

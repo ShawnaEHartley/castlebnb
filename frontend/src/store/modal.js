@@ -1,5 +1,3 @@
-
-
   export const closeModalHandler = () => {
     return {type: "modalOff"}
   };
