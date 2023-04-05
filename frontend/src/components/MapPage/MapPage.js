@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchListings, getListings } from '../../store/listings';
 import NavBar from '../NavBar/NavBar';
 
+import list from '../../assets/images/icons8-bullet-list-90.png';
 import './MapPage.css';
+import { useHistory } from 'react-router-dom';
 
 function MyMapComponent() {
   const ref = useRef(null);
@@ -13,6 +15,7 @@ function MyMapComponent() {
 
   useEffect(()=>{
     dispatch(fetchListings())
+    console.log('in useEffect')
   }, [dispatch])
 
   const center = {lat: 0.531464e2, lng: 0.3379e0};
@@ -31,8 +34,6 @@ function MyMapComponent() {
       const long = parseInt(listing["longitude"]);
       const center = {lat: lat, lng: long};
 
-      console.log(center)
-
       const title = listing["title"]
       
       new window.google.maps.Marker({
@@ -46,15 +47,22 @@ function MyMapComponent() {
 };
 
 const MapWrapper = (props) => {
+  const history = useHistory();
+
+  const openList = () => {
+    history.push('/')
+  }
 
   return (
-
-    <>
+  <>
     <NavBar />
+    <div className='map-page-wrapper'>
     <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} >
       <MyMapComponent { ...props } />
     </Wrapper>
-    </>
+    <button className='show-map-button' onClick={openList}> Show List <img src={list} alt='list'></img></button>
+    </div>
+  </>
   )
 };
 
