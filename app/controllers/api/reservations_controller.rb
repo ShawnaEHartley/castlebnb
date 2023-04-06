@@ -1,6 +1,11 @@
 class Api::ReservationsController < ApplicationController
 
 
+  def index 
+    @reservations = Reservation.all
+    render 'api/reservations/index'
+  end
+
   def show 
     @reservation = Reservation.find_by(id: params[:id])
 

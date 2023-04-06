@@ -19,7 +19,7 @@ export const getReservations = state => {
 };
 
 export const fetchReservations = () => async dispatch => {
-  const res = await csrfFetch('api/reservations');
+  const res = await csrfFetch('/api/reservations');
 
   if (res.ok) {
     const data = await res.json();

@@ -27,7 +27,6 @@ export const getListing = listingId => state => {
 };
 
 export const getListings = state => {
-  console.log('fetching listings')
   if (state.listings) {
     return Object.values(state.listings);
   } else {

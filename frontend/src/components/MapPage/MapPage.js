@@ -15,7 +15,6 @@ function MyMapComponent() {
 
   useEffect(()=>{
     dispatch(fetchListings())
-    console.log('in useEffect')
   }, [dispatch])
 
   const center = {lat: 0.531464e2, lng: 0.3379e0};
@@ -57,10 +56,10 @@ const MapWrapper = (props) => {
   <>
     <NavBar />
     <div className='map-page-wrapper'>
-    <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} >
-      <MyMapComponent { ...props } />
-    </Wrapper>
-    <button className='show-map-button' onClick={openList}> Show List <img src={list} alt='list'></img></button>
+      <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} >
+        <MyMapComponent { ...props } />
+      </Wrapper>
+      <button className='show-map-button' onClick={openList}> Show List <img src={list} alt='list'></img></button>
     </div>
   </>
   )

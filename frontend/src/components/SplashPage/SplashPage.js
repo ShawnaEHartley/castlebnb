@@ -6,8 +6,8 @@ const SplashPage = () => {
 
   return (
     <>
+      <NavBar />
       <div className='splash-page-wrapper'>
-        <NavBar />
         <ListingIndex />
       </div>
     </>

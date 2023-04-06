@@ -38,8 +38,6 @@ const ReservationForm = ({listing}) => {
     return numGuests === 0
   }
 
-  console.log(numGuests)
-
   const reserve = (e) => {
     e.preventDefault();
     dispatch(createReservation(history, {

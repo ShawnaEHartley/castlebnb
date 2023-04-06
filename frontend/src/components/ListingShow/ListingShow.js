@@ -73,8 +73,8 @@ const ListingShow = () => {
     <>
     { modalState.on ? <div className='modal-background' onClick={()=>{dispatch(closeModalHandler())}}></div> : "" }
     { modalState.on ? <div className='modal-wrapper'>{ modalComponent() }</div> : "" }
+    <NavBar />
     <div className='whole-show-page'>
-      <NavBar />
       <div className='listing-show-page'>
 
       <div className='title-subtitle-outter-wrapper'>
