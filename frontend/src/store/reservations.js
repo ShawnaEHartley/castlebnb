@@ -28,6 +28,15 @@ export const fetchReservations = () => async dispatch => {
   }
 };
 
+export const fetchReservationsByUser = (userId) => async dispatch => {
+  const res = await csrfFetch(`/api/reservations/${userId}`);
+
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(receiveReservations(data.reservations));
+    return res;
+  }
+}
 const receiveReservation = (reservation) => {
   return {
     type: RECEIVE_RESERVATION,

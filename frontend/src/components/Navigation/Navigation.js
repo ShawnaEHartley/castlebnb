@@ -16,7 +16,7 @@ function Navigation(props) {
       return (
         <section className='profiledrop'>
           <div id='profileDropLogIn' className='profileDropItem'>
-            <div onClick={goToTripPage}>My Trips</div>
+            <div onClick={goToTripPage}>Trips</div>
           </div>
           <div className='profileDropItem'>
             <div onClick={props.onLogOut}>Log out</div>

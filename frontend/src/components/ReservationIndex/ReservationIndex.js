@@ -13,24 +13,20 @@ const ReservationIndex = () => {
     dispatch(fetchReservations())
   }, [dispatch])
 
-  const myReservations = () => {
-    const arr = [];
-    reservations.each(reservation => {
-      if (reservation.reserverId === sessionUser) {
-        arr.push(reservation)
-      }
-    });
-    return arr
-  };
 
   return (
     <div className='res-index-wrapper'>
+    <div className='res-index-title'>Trips</div>
       <div className='res-index'>
         {reservations.map((reservation) => {
           return (
             reservation ? <ReservationIndexItem reservation={reservation} key={reservation.id} /> : 'loading' 
           )
         })}
+      </div>
+      <div>
+        <div className='res-index-subtitle'> Where you've been</div>
+
       </div>
     </div>
   )

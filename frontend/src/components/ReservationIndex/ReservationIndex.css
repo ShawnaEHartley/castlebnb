@@ -1,3 +1,14 @@
+.res-index-title {
+  font-weight: bold;
+  font-size: 24px;
+  margin: 20px 0px 10px 150px ;
+}
+
+.res-index-subtitle {
+  font: bold;
+  font-size: 20px;
+  margin: 20px 0px 10px 150px ;
+}
 
 .res-index {
   display: flex;
@@ -8,6 +19,7 @@
 }
 
 .reservation-item-wrapper {
+  background: yellow;
   display: flex;
   align-items: center;
   border-width: 1px;
@@ -25,4 +37,16 @@
   height: 150px;
   width: 150px;
   margin-right: 50px;
+}
+
+.reservation-item-right button {
+  width: 110px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: #660c14;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin: 5px 0px;
 }
