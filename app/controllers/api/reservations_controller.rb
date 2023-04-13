@@ -2,7 +2,21 @@ class Api::ReservationsController < ApplicationController
 
 
   def index 
-    @reservations = Reservation.all
+    @reservations = Reservation
+      .where(reserver_id: current_user.id)
+      .order(start_date: :asc)
+
+      @current_reservations = []
+      @past_reservations = []
+    
+      @reservations.each do |reservation|
+        if reservation.start_date >= Date.today
+          @current_reservations << reservation
+        else
+          @past_reservations << reservation
+        end
+      end
+      
     render 'api/reservations/index'
   end
 
@@ -36,7 +50,11 @@ class Api::ReservationsController < ApplicationController
   end
 
   def update
+    @reservation = Reservation.find(params[:id])
 
+    if @reservation.reserver_id === current_user.id
+      @reservation.update(reservation_params)
+    end
   end
 
   private

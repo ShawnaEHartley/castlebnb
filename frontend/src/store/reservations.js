@@ -36,7 +36,8 @@ export const fetchReservationsByUser = (userId) => async dispatch => {
     dispatch(receiveReservations(data.reservations));
     return res;
   }
-}
+};
+
 const receiveReservation = (reservation) => {
   return {
     type: RECEIVE_RESERVATION,

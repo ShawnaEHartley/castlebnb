@@ -5,7 +5,6 @@ import ReservationIndexItem from './ReservationIndexItem';
 
 
 const ReservationIndex = () => {
-  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const reservations = useSelector(getReservations);
   
@@ -16,18 +15,24 @@ const ReservationIndex = () => {
 
   return (
     <div className='res-index-wrapper'>
-    <div className='res-index-title'>Trips</div>
-      <div className='res-index'>
+      <div className='res-index-title'>Trips</div>
+      {console.log(reservations)}
+        <div className='res-index'>
+          {reservations.map((reservation) => {
+            return (
+              reservation ? <ReservationIndexItem reservation={reservation} key={reservation.id} /> : 'loading' 
+            )
+          })}
+        </div>
+
+      <div className='res-index-subtitle'> Where you've been</div>
+        <div className='res-index'>
         {reservations.map((reservation) => {
           return (
             reservation ? <ReservationIndexItem reservation={reservation} key={reservation.id} /> : 'loading' 
           )
         })}
-      </div>
-      <div>
-        <div className='res-index-subtitle'> Where you've been</div>
-
-      </div>
+        </div>
     </div>
   )
 };
