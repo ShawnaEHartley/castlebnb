@@ -1,4 +1,6 @@
 import csrfFetch from './csrf';
+import { closeModalHandler } from './modal';
+import { fetchReservations } from './reservations';
 
 
 export const RECEIVE_LISTING = 'listings/RECEIVE_LISTING';
@@ -99,6 +101,19 @@ export const createReservation = (history, reservation) => async dispatch => {
   if (res.ok) {
     const data = await res.json();
     history.push(`/reservations/${data.reservationId}/confirmation`);
+  }
+  return res;
+};
+
+export const updateReservation = (reservation) => async dispatch => {
+  const res = await csrfFetch(`/api/reservations/${reservation.id}/`, {
+    method: 'PATCH',
+    body: JSON.stringify(reservation)
+  });
+
+  if (res.ok) {
+    dispatch(fetchReservations());
+    dispatch(closeModalHandler());
   }
   return res;
 }

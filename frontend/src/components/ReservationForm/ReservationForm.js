@@ -44,7 +44,8 @@ const ReservationForm = ({listing}) => {
       listing_id: listing.id,
       reserver_id: sessionUser.id,
       start_date: startDate,
-      end_date: endDate
+      end_date: endDate,
+      num_guests: numGuests
     }))};
 
 

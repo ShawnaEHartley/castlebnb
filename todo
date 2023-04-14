@@ -21,3 +21,14 @@ reservation dates
 Misc
   update listings location coordinates via CLI
 
+
+
+Priority 1:
+just the error if you try to book a reservation overlap
+Get all functionality CRUD reservations
+flow through all pages 
+
+
+Post Green Lit:
+calendar date overlap
+maps marker

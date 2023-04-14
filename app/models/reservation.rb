@@ -9,6 +9,7 @@
 #  end_date    :datetime         not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  num_guests  :integer
 #
 class Reservation < ApplicationRecord
 
@@ -26,14 +27,14 @@ class Reservation < ApplicationRecord
     foreign_key: :reserver_id,
     class_name: :User
 
-    validate :reservation_date_validator
+  # validate :reservation_date_validator
 
-    private
-    def reservation_date_validator 
-      overlapping = Reservation.where("start_date < ? AND end_date > ?", end_date, tart_date)
-      if overlapping.exists?
-        errors.add(:base, "Reservation overlap")
-      end
-    end
+  #   private
+  #   def reservation_date_validator 
+  #     overlapping = Reservation.where("start_date < ? AND end_date > ?", end_date, start_date)
+  #     if overlapping.exists?
+  #       errors.add(:base, "Reservation overlap")
+  #     end
+  #   end
     
 end
