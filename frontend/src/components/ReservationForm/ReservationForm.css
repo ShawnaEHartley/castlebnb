@@ -12,14 +12,13 @@
 
 .reservation-header{
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  margin: 0px 0px 20px 0px;
+  margin: 0px 0px 10px 0px;
 }
 
 .reservation-title {
-  font-size: 30px;
-  margin: 10px 0px;
+  font-size: 24px;
+  margin: 8px 0px;
 }
 
 .reservation-review-pane {

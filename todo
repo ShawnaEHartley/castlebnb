@@ -32,3 +32,13 @@ flow through all pages
 Post Green Lit:
 calendar date overlap
 maps marker
+
+
+
+update listing locations via CLI
+/ reseed
+
+when you make a reservation, and try to go to mytrips, you have to refresh for it to pull properly
+(maybe bc of the new listings store)
+
+

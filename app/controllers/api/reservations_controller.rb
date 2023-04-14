@@ -34,6 +34,12 @@ class Api::ReservationsController < ApplicationController
   def create 
     @reservation = Reservation.new(reservation_params)
 
+    puts 'Hello'
+    puts reservation_params
+    puts "2"
+    puts @reservation
+    puts 'ennnnnd'
+
     if @reservation.can_reserve?
       if @reservation.save
         render 'api/reservations/confirmation'
@@ -68,7 +74,8 @@ class Api::ReservationsController < ApplicationController
       :listing_id,
       :reserver_id,
       :start_date,
-      :end_date
+      :end_date,
+      :num_guests
     )
   end
 end

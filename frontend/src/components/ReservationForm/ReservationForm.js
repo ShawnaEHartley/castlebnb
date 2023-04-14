@@ -45,7 +45,7 @@ const ReservationForm = ({listing}) => {
       reserver_id: sessionUser.id,
       start_date: startDate,
       end_date: endDate,
-      num_guests: numGuests
+      num_guests: parseInt(numGuests)
     }))};
 
 
@@ -77,6 +77,7 @@ const ReservationForm = ({listing}) => {
           <img src={star} alt="star" className='icon subtitle-left-item' id='show-icon-star' />
           <div className='icon-text subtitle-left-item' id='show-icon-rating-text'>4.76</div>
           <span className='subtitle-left-item'>·</span>
+          {/* { listing.listingReviews ? <a href='#show-page-review-wrapper' className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</a> : <div>0</div>} */}
           <a href='#show-page-review-wrapper' className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</a>
         </div>
       </div>
@@ -105,7 +106,7 @@ const ReservationForm = ({listing}) => {
           <div className='reservation-guests'>
             <Select 
             className='reservation-button' id='res-guests-button' 
-            onChange={num => setNumGuests(num)}
+            onChange={num => setNumGuests(num.value)}
             placeholder='GUESTS'
             options={values} 
             />

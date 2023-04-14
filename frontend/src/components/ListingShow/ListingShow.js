@@ -88,14 +88,13 @@ const ListingShow = () => {
             <img src={star} alt="star" className='icon subtitle-left-item' id='show-icon-star' />
             <div className='icon-text subtitle-left-item' id='show-icon-rating-text'>4.76</div>
             <span className='subtitle-left-item'>·</span>
+            {/* { listing.listingReviews ? <a href='#show-page-review-wrapper' className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</a> : <div>0</div>} */}
             <a href='#show-page-review-wrapper' className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</a>
-            {/* <div className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</div> */}
             <span className='subtitle-left-item'>·</span>
             <img src={badge} alt="badge" className='icon subtitle-left-item' id='show-icon-badge' />
             <div className='icon-text subtitle-left-item' id='show-icon-host-text'>Superhost</div>
             <span className='subtitle-left-item'>·</span>
             <a href='#show-page-map-wrapper' className='location subtitle-left-item'>{listing.city}, {listing.region}</a>
-            {/* <h2 className='location subtitle-left-item'>{listing.city}, {listing.region}</h2> */}
           </div>
 
           <div className='subtitle-right'>
