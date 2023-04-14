@@ -27,14 +27,30 @@ class Reservation < ApplicationRecord
     foreign_key: :reserver_id,
     class_name: :User
 
-  # validate :reservation_date_validator
+  # validate :date_valid?
 
-  #   private
-  #   def reservation_date_validator 
-  #     overlapping = Reservation.where("start_date < ? AND end_date > ?", end_date, start_date)
-  #     if overlapping.exists?
-  #       errors.add(:base, "Reservation overlap")
-  #     end
-  #   end
+  def can_reserve? 
+    listing_rez = Reservation.where(listing_id: self.listing_id)
+    return listing_rez.all?{ |reservation| reservation.date_valid?(self.start_date, self.end_date)}
+  end
+
+private
+
+  def date_valid?(req_start_date, req_end_date) 
+    booked_start_date = self.start_date
+    booked_end_date = self.end_date
+
+    # if req start date is before start date and req end date is after start date, return false
+    if req_start_date <= booked_start_date && req_end_date > booked_start_date
+      return false
+    end
+
+    # if req start date is between the start date and end date (>= start date and < end date)
+    if req_start_date >= booked_start_date && req_start_date < booked_end_date
+      return false
+    end
+
+    return true
+  end
     
 end

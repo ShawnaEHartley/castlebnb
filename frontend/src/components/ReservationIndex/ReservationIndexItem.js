@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeModalHandler } from '../../store/modal';
+import DeleteConfirmation from '../ReservationForm/DeleteConfirmation';
 import UpdateReservationForm from '../ReservationForm/UpdateReservationForm';
 import dayjs from 'dayjs';
 import './ReservationIndex.css';
@@ -25,11 +26,19 @@ const ReservationIndexItem = ({reservation}) => {
       return (
         <UpdateReservationForm reservation={reservation} />
       )
+    } else if (modalState.component === 'deleteConfirmation' && modalState.reservationId === reservation.id) {
+      return (
+        <DeleteConfirmation reservation={reservation} />
+      )
     }
   }
   
   const updateHandler = () => {
     dispatch({type: 'modalOn', component: 'updateReservationForm', reservationId: reservation.id})
+  };
+
+  const deleteHandler = () => {
+    dispatch({type: 'modalOn', component: 'deleteConfirmation', reservationId: reservation.id})
   }
   
   if (!reservation.listing) {
@@ -54,7 +63,7 @@ const ReservationIndexItem = ({reservation}) => {
       </div>
       <div className='reservation-item-right'>
         <button onClick={updateHandler}>update</button>
-        <button>delete</button>
+        <button onClick={deleteHandler}>delete</button>
       </div>
     </div>
   )

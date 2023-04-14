@@ -66,6 +66,13 @@
   border-radius: 0px 0px 20px 20px;
 }
 
+.reservation-subtitle {
+  font-size: 18px;
+  margin-top: 25%;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
 .reserve-button {
   width: 310px;
   height: 45px;
@@ -75,7 +82,8 @@
   color: white;
   font-size: 16px;
   letter-spacing: 2px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  margin: 5px 0px 5px 10px;
 }
 
 .reserve-button:disabled {

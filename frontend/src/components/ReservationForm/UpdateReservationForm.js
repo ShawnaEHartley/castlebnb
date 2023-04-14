@@ -84,6 +84,7 @@ const UpdateReservationForm = ({reservation}) => {
             className='reservation-button' id='res-guests-button' 
             onChange={num => setNumGuests(num)}
             placeholder={numGuests}
+            value={numGuests}
             options={values} 
             />
           </div>

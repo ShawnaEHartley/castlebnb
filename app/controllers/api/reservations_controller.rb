@@ -34,10 +34,15 @@ class Api::ReservationsController < ApplicationController
   def create 
     @reservation = Reservation.new(reservation_params)
 
-    if !@reservation.save
-      render json: { errors: @reservation.errors.full_messages }, status: 404
-    else
-      render 'api/reservations/confirmation'
+    if @reservation.can_reserve?
+      if @reservation.save
+        render 'api/reservations/confirmation'
+      else
+        render json: { errors: @reservation.errors.full_message }, status: 404
+      end
+    else 
+      render json: { errors: 'booking overlap'}, status: 409
+      return
     end
   end
 
