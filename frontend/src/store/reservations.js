@@ -19,7 +19,17 @@ export const getReservations = state => {
 };
 
 export const fetchReservations = () => async dispatch => {
-  const res = await csrfFetch('api/reservations');
+  const res = await csrfFetch('/api/reservations');
+
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(receiveReservations(data.reservations));
+    return res;
+  }
+};
+
+export const fetchReservationsByUser = (userId) => async dispatch => {
+  const res = await csrfFetch(`/api/reservations/${userId}`);
 
   if (res.ok) {
     const data = await res.json();
@@ -57,10 +67,15 @@ const reservationsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_RESERVATIONS:
-      return {...newState, ...action.payload};
-    case RECEIVE_RESERVATION:
-      newState[action.payload.id] = action.payload;
-      return newState;
+      return {...newState, 
+        index: action.payload,
+        show: null
+      };
+    case RECEIVE_RESERVATION: 
+    return {
+      ...newState,
+      show: action.payload
+    };
     default:
       return newState;
   }

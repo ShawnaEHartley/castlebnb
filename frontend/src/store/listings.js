@@ -1,4 +1,6 @@
 import csrfFetch from './csrf';
+import { closeModalHandler } from './modal';
+import { fetchReservations } from './reservations';
 
 
 export const RECEIVE_LISTING = 'listings/RECEIVE_LISTING';
@@ -19,16 +21,16 @@ const receiveListings = listings => {
 };
 
 export const getListing = listingId => state => {
-  if (state.listings) {
-    return state.listings[listingId];
+  if (state.listings && state.listings.show) {
+    return state.listings.show[listingId];
   } else {
     return null;
   }
 };
 
 export const getListings = state => {
-  if (state.listings) {
-    return Object.values(state.listings);
+  if (state.listings && state.listings.index) {
+    return Object.values(state.listings.index);
   } else {
     return [];
   }
@@ -91,17 +93,55 @@ export const updateReview = (review) => async dispatch => {
 };
 
 export const createReservation = (history, reservation) => async dispatch => {
-  const res = await csrfFetch(`/api/listings/${reservation.listing_id}/reservations/`, {
+  let res;
+
+  try { 
+    res = await csrfFetch(`/api/listings/${reservation.listing_id}/reservations/`, {
     method: 'POST',
     body: JSON.stringify(reservation)
   });
-  
-  if (res.ok) {
+  } catch (error) {
+    if (error.status === 409) {
+      alert('Dates already taken, please choose another listing or dates')
+    }}
+    
+  if (res && res.ok) {
     const data = await res.json();
     history.push(`/reservations/${data.reservationId}/confirmation`);
+  } 
+  return res;
+};
+
+export const updateReservation = (reservation) => async dispatch => {
+  let res;
+
+  try {
+    res = await csrfFetch(`/api/reservations/${reservation.id}/`, {
+    method: 'PATCH',
+    body: JSON.stringify(reservation)
+  });
+  } catch (error) {
+    if (error.status === 409) {
+      alert ('Dates already taken, please choose another listing or dates')
+    }}
+
+  if (res && res.ok) {
+    dispatch(fetchReservations());
+    dispatch(closeModalHandler());
   }
   return res;
-}
+};
+
+export const deleteReservation = (reservationId) => async dispatch => {
+  const res = await csrfFetch(`/api/reservations/${reservationId}`, {
+    method: 'DELETE'
+  });
+  if (res.ok) {
+    dispatch(fetchReservations());
+    dispatch(closeModalHandler());
+  }
+  return res;
+};
 
 
 const listingsReducer = (state = {}, action) => {
@@ -109,10 +149,16 @@ const listingsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_LISTING:
-      newState[action.payload.id] = action.payload;
+      if (!newState.show) {
+        newState.show = {}
+      }
+      newState.show[action.payload.id] = action.payload;
+      newState.index = null;
       return newState;
     case RECEIVE_LISTINGS:
-      return action.payload;
+      newState.index = action.payload;
+      newState.show = null
+      return newState;
     default:
       return newState;
   }

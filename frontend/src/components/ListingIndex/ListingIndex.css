@@ -1,5 +1,8 @@
 .index-wrapper {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .index {
@@ -42,4 +45,27 @@
 
 .index-price {
   padding-top: 10px;
+}
+
+.show-map-button {
+  border-radius: 30px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  letter-spacing: .8px;
+  position: sticky;
+  bottom: 30px;
+  padding: 10px 20px;
+  height: 40px;
+  width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-map-button img {
+  height: 22px;
+  width: 25px;
+  margin-left: 5px;
 }
