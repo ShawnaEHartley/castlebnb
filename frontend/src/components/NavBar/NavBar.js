@@ -18,6 +18,7 @@ import icon from '../../assets/images/castle_icon.png';
 import globe from '../../assets/images/icons8-earth-globe-30.png';
 import menu from '../../assets/images/icons8-menu-rounded-30.png';
 import profile from '../../assets/images/icons8-customer-30.png';
+import shawna from '../../assets/images/cartoon_shawna.png';
 
 import './NavBar.css'
 
@@ -30,6 +31,10 @@ function NavBar() {
   const modalState = useSelector((state)=>{
     return state.modal;
   });
+
+  const currentUser = useSelector(state => state.session.user)
+
+  console.log(currentUser)
 
   const dispatch = useDispatch();
 
@@ -90,7 +95,7 @@ function NavBar() {
         </Menu>
           <div className='profile-nav-icon' onClick={toggleProfileHandler}>
             <img id='menu-icon' src={menu} alt="" />
-            <img id='profile-icon' src={profile} alt="" />
+            {!currentUser ? <img id='profile-icon' src={profile} alt="" /> : <img id='profile-icon' src={shawna} alt="" />}
             {/* <button id='profile-button' onClick={toggleProfileHandler}>Profile</button> */}
           { profileToggle ? <Navigation onSignUp={signUpModalHandler} onLogIn={logInModalHandler} onLogOut={logOutHandler} /> : "" }
           </div>
