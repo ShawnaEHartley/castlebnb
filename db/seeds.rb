@@ -120,8 +120,8 @@ ApplicationRecord.transaction do
     state: "The Crownlands",
     zip_code: "01754",
     country: "Kings Landing",
-    latitude: 53.1464,
-    longitude: 0.3379,
+    latitude: 52.9454,
+    longitude: 1.2106,
     region: "The Crownlands",
     price: 300,
     max_guests: 6,
@@ -134,7 +134,7 @@ ApplicationRecord.transaction do
   l2 = Listing.create!(
     title: "The Red Keep",
     subtitle: 'Built in 45 AC',
-    lister_id: 2,
+    lister_id: 4,
     description: "Experience the epitome of architectual grandeur with a stay at the magnificent Red Keep. This stunning fortress, located in the heart of a bustling city, is a true gem of medieval architecture and the perfect choice for travelers seeking a unique and unforgettable experience.
     Enter the castle's grand halls, filled with elaborate tapestries and antique furnishings, and feel like royalty as you bask in the richness of its history. With room for up to 30 guests, this castle is perfect for families, friends, and large groups looking for a one-of-a-kind getaway.
     The castle features a number of spacious and well-appointed bedrooms, each with its own unique charm and character. Soak in the views of the surrounding city from the comfort of your bed, or take a stroll around the castle's battlements and imagine yourself as a medieval lord, surveying your lands.
@@ -145,8 +145,8 @@ ApplicationRecord.transaction do
     state: "The Crownlands",
     zip_code: "10000",
     country: "Westeros",
-    latitude: 52.7901,
-    longitude: -0.1557,
+    latitude: 51.5120,
+    longitude: -0.1040,
     region: "The Crownlands",
     price: 1000,
     max_guests: 2,
@@ -200,7 +200,7 @@ ApplicationRecord.transaction do
   l4 = Listing.create!(
     title: "Winterfell Castle",
     subtitle: 'Built 8,000 BC',
-    lister_id: 9,
+    lister_id: 2,
     description: "Escape to the heart of the North with a stay in a room at the historic Winterfell Castle. This magnificent fortress, located in the rolling hills of the North, is a true testament to the ancestrial home of the Starks.
     Your spacious and well-appointed room features antique furnishings, elegant tapestries, and breathtaking views of the surrounding countryside. Relax in the comfort of your bed and soak in the ambiance of this ancient castle, or take a stroll around the castle's ramparts and imagine yourself as a medieval lord, surveying your lands.
     The castle also features a grand dining hall, where you can enjoy feasts fit for a king and share tales of your adventures. The fully equipped kitchen will allow you to cook up your own creations or let the castle's staff cook for you.
@@ -210,8 +210,8 @@ ApplicationRecord.transaction do
     state: "The North",
     zip_code: "10002",
     country: "Westeros",
-    latitude: 51.5074,
-    longitude: -0.1278,
+    latitude: 55.9529,
+    longitude: -3.2174,
     region: "The North",
     price: 120,
     max_guests: 2,
@@ -231,36 +231,42 @@ ApplicationRecord.transaction do
   l5 = Listing.create!(
     title: 'Casterly Rock',
     subtitle: 'Built in 6,000 BC' ,
-    lister_id: 4,
+    lister_id: 6,
     description: "Welcome to your luxurious retreat within the ancient walls of Casterly Rock. This spacious and stylish room is the perfect home base for exploring the castle and the surrounding area. The room features a comfortable king-sized bed, a seating area, and an en-suite bathroom with a shower and complimentary toiletries. The room is designed with your comfort in mind, and includes modern amenities such as a flat-screen TV with cable, free Wi-Fi, air conditioning, and heating. The room also features stunning views of the castle and the surrounding countryside. As a guest in this room, you will have access to all the amenities of the castle, including its restaurants, shops, and gardens. The host is available to help you plan your itinerary and make the most of your stay in Casterly Rock. Whether you're here to experience the history and magic of this ancient castle, or simply to relax and unwind in luxurious surroundings, this room in Casterly Rock is the perfect choice for your stay. Book now to experience the ultimate in comfort and style within the walls of one of Westeros' most iconic castles.",
     city: "Casterly Rock",
     state: "Westerlands",
     country: "Westeros",
     region: "Westerlands",
-    price: 650
+    price: 650,
+    latitude: 51.5761,
+    longitude: -3.2214,
   )
 
   l6 = Listing.create!(
     title: 'Highgarden',
     subtitle: 'Built in  760 AC' ,
-    lister_id: 8,
+    lister_id: 5,
     description: "Welcome to your luxurious apartment in the heart of Highgarden, the idyllic and peaceful capital of the Reach. This beautifully designed and tastefully furnished two-bedroom apartment is the perfect home base for your stay in one of Westeros' most beautiful and historic locations. The apartment features two spacious and beautifully appointed bedrooms, each with a comfortable queen-sized bed, soft linens, and plenty of closet space. The living room is cozy and inviting, with comfortable seating, a flat-screen TV, and large windows that let in plenty of natural light. The kitchen is fully equipped with everything you need to prepare meals and snacks during your stay, including a stove, oven, microwave, and refrigerator. The apartment also features a dining area with a table that seats four, and a beautifully appointed bathroom with a shower, complimentary toiletries, and plenty of towels. Additionally, the apartment has air conditioning, heating, and free Wi-Fi throughout. As a guest in this apartment, you'll have access to all of the amenities of Highgarden, including its stunning gardens, museums, shops, and restaurants. The apartment's host is available to help you plan your itinerary and make the most of your stay in this enchanting city. Whether you're here to explore the history and culture of Highgarden, or simply to relax and unwind in luxurious surroundings, this two-bedroom apartment is the perfect choice for your stay. Book now to experience the ultimate in comfort and convenience in one of Westeros' most magical locations.",
     city: 'Highgarden',
     state: 'The Reach',
     country: 'Westeros',
     region: 'The Reach',
-    price: 300
+    price: 300,
+    latitude: 50.3284,
+    longitude: -4.6453,
   )
 
   l7 = Listing.create!(
     title: 'Dothraki Hut',
     subtitle: 'Home of the nomadic warriors of the grasslands' ,
-    lister_id: 4,
+    lister_id: 3,
     description: "Experience the unique and rugged lifestyle of the Dothraki people in this authentic and cozy hut. Nestled in the heart of the vast Dothraki Sea, this traditional hut offers a one-of-a-kind experience for those seeking adventure and cultural immersion. The hut is made of natural materials, with a sturdy wooden frame and walls made of woven grasses and animal hides. Inside, you'll find a simple and comfortable space, with a plush bed draped in colorful fabrics and plenty of cushions for lounging. The hut also features a small table and chairs for dining or playing games, as well as a small fireplace for warmth and ambiance.As a guest in this hut, you'll have the opportunity to learn about the traditions and customs of the Dothraki people, from their horsemanship skills to their unique approach to food and drink. You can take part in a traditional meal, prepared over an open fire, and learn about the herbs and spices used in Dothraki cooking. The hut is located in a prime location for exploring the vast and awe-inspiring Dothraki Sea, and your hosts can help you plan excursions and activities to make the most of your stay. Whether you're interested in horseback riding, archery, or simply soaking up the breathtaking scenery, there's something for everyone in this unique and unforgettable setting. Book now to experience the raw and untamed beauty of the Dothraki Sea in the comfort of an authentic and inviting hut.",
     city: 'Vaes Dothrak',
     state: 'Dothraki Sea',
     country: 'Essos',
-    region: 'Essos'
+    region: 'Essos',
+    latitude: 50.0798,
+    longitude: 14.4292,
   )
 
   l8 = Listing.create!(
@@ -276,7 +282,9 @@ ApplicationRecord.transaction do
     state: 'North of the Wall',
     country: 'North of the Wall',
     region: 'North of the Wall',
-    price: 40
+    price: 40,
+    latitude: 57,4785,
+    longitude: -4.2265,
   )
 
 
@@ -477,18 +485,6 @@ ApplicationRecord.transaction do
       
   Review.create!(
     listing_id: 2,
-    user_id: 4,
-    cleanliness_rating: 5,
-    communication_rating: 5,
-    checkin_rating: 5,
-    accuracy_rating: 5,
-    location_rating: 4,
-    value_rating: 4,
-    body: "We loved our stay here! The room was spotlessly clean and the host was extremely responsive to our messages. Check-in was a breeze and the accuracy of the listing was excellent. The location was good, with easy access to public transportation. Overall, we had a wonderful experience and would definitely recommend this place to anyone visiting the area."
-  )
-      
-  Review.create!(
-    listing_id: 2,
     user_id: 6,
     cleanliness_rating: 4,
     communication_rating: 4,
@@ -621,7 +617,7 @@ ApplicationRecord.transaction do
   
   Review.create!(
     listing_id: 5,
-    user_id: 10,
+    user_id: 7,
     cleanliness_rating: 5,
     communication_rating: 5,
     checkin_rating: 5,
@@ -632,8 +628,8 @@ ApplicationRecord.transaction do
   )
 
   Review.create!(
-    listing_id: 4,
-    user_id: 7,
+    listing_id: 5,
+    user_id: 9,
     cleanliness_rating: 4,
     communication_rating: 5,
     checkin_rating: 5,
@@ -657,7 +653,7 @@ ApplicationRecord.transaction do
   
   Review.create!(
     listing_id: 5,
-    user_id: 6,
+    user_id: 11,
     cleanliness_rating: 4,
     communication_rating: 5,
     checkin_rating: 5,

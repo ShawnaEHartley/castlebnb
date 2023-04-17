@@ -12,30 +12,38 @@ const ReservationIndex = () => {
     dispatch(fetchReservations())
   }, [dispatch])
 
-  const currentReservations = reservations[0];
-  const pastReservations = reservations[1];
-
-  return (
-    <div className='res-index-wrapper'>
-      <div className='res-index-title'>Trips</div>
-        <div className='res-index'>
-          {!currentReservations ? <div>No Stays Booked</div> : currentReservations.map((reservation) => {
+  if (!reservations[0]) {
+    return (
+      <div className='res-index-wrapper'>
+      </div>
+    )
+  } else {
+    const currentReservations = reservations[0].currentReservations;
+    const pastReservations = reservations[0].pastReservations;
+  
+    return (
+      <div className='res-index-wrapper'>
+        <div className='res-index-title'>Trips</div>
+          <div className='res-index'>
+            {!currentReservations ? <div>No Stays Booked</div> : currentReservations.map((reservation) => {
+              return (
+                <ReservationIndexItem reservation={reservation} key={reservation.id} />
+              )
+            })}
+          </div>
+  
+        <div className='res-index-subtitle'> Where you've been</div>
+          <div className='res-index'>
+          {!pastReservations ? <div></div> : pastReservations.map((reservation) => {
             return (
               <ReservationIndexItem reservation={reservation} key={reservation.id} />
             )
           })}
-        </div>
+          </div>
+      </div>
+    )
+  }
 
-      <div className='res-index-subtitle'> Where you've been</div>
-        <div className='res-index'>
-        {!pastReservations ? <div></div> : pastReservations.map((reservation) => {
-          return (
-            <ReservationIndexItem reservation={reservation} key={reservation.id} />
-          )
-        })}
-        </div>
-    </div>
-  )
 };
 
 export default ReservationIndex;

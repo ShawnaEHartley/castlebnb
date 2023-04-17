@@ -26,8 +26,7 @@ const UpdateReservationForm = ({reservation}) => {
       <div>Loading...</div>
     )
   };
-  console.log(reservation)
-  console.log(numGuests)
+
   let values = [];
   for (let i = 1; i <= listing.maxGuests; i++) {
     const ele = {value: i.toString(), label: i.toString()}  

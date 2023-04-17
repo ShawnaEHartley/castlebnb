@@ -27,14 +27,11 @@ class Reservation < ApplicationRecord
     foreign_key: :reserver_id,
     class_name: :User
 
-  # validate :date_valid?
-
   def can_reserve? 
     listing_rez = Reservation.where(listing_id: self.listing_id)
     return listing_rez.all?{ |reservation| reservation.date_valid?(self.start_date, self.end_date)}
   end
 
-private
 
   def date_valid?(req_start_date, req_end_date) 
     booked_start_date = self.start_date
