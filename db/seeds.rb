@@ -14,6 +14,7 @@ require "open-uri"
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
+  Reservation.destroy_all
   Review.destroy_all
   Listing.destroy_all
   User.destroy_all
@@ -283,7 +284,7 @@ ApplicationRecord.transaction do
     country: 'North of the Wall',
     region: 'North of the Wall',
     price: 40,
-    latitude: 57,4785,
+    latitude: 57.4785,
     longitude: -4.2265,
   )
 
