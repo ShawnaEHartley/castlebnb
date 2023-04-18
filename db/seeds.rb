@@ -254,7 +254,7 @@ ApplicationRecord.transaction do
     region: 'The Reach',
     price: 300,
     latitude: 50.3284,
-    longitude: -4.6453,
+    longitude: -4.6453
   )
 
   l7 = Listing.create!(
@@ -267,7 +267,7 @@ ApplicationRecord.transaction do
     country: 'Essos',
     region: 'Essos',
     latitude: 50.0798,
-    longitude: 14.4292,
+    longitude: 14.4292
   )
 
   l8 = Listing.create!(
@@ -285,7 +285,7 @@ ApplicationRecord.transaction do
     region: 'North of the Wall',
     price: 40,
     latitude: 57.4785,
-    longitude: -4.2265,
+    longitude: -4.2265
   )
 
 
