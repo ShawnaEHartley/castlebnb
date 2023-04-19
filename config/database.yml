@@ -23,8 +23,8 @@ default: &default
 
 
 development:
-  <<: *default
-  database: castlebnb_development
+    <<: *default
+    database: castlebnb_development
 
 
   # The specified database role being used to connect to postgres.
