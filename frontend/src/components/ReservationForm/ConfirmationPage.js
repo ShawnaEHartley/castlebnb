@@ -15,6 +15,10 @@ const ConfirmationPage = () => {
     dispatch(fetchReservation(reservationId))
   }, [dispatch, reservationId])
 
+  console.log("begin")
+  console.log(reservation)
+  console.log("end")
+
   if (!reservation) {
     return (
       <div>Loading...</div>
