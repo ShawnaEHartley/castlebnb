@@ -7,7 +7,7 @@ import Select from 'react-select';
 
 import LoginFormPage from '../UserAuthModal/LoginFormPage.js';
 import { closeModalHandler } from '../../store/modal.js';
-import { createReservation } from '../../store/listings';
+import { createReservation } from '../../store/reservations';
 
 import star from '../../assets/images/icons8-star-filled-100.png';
 
@@ -89,6 +89,7 @@ const ReservationForm = ({listing}) => {
             <DatePicker
             className='reservation-button' id='res-checkin-button'
             value={startDate}
+            minDate={today}
             onChange={date => {
               setStartDate(date);
               if (date.isAfter(endDate)) {

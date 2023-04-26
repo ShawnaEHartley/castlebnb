@@ -92,56 +92,56 @@ export const updateReview = (review) => async dispatch => {
   return res;
 };
 
-export const createReservation = (history, reservation) => async dispatch => {
-  let res;
+// export const createReservation = (history, reservation) => async dispatch => {
+//   let res;
 
-  try { 
-    res = await csrfFetch(`/api/listings/${reservation.listing_id}/reservations/`, {
-    method: 'POST',
-    body: JSON.stringify(reservation)
-  });
-  } catch (error) {
-    if (error.status === 409) {
-      alert('Dates already taken, please choose another listing or dates')
-    }}
+//   try { 
+//     res = await csrfFetch(`/api/listings/${reservation.listing_id}/reservations/`, {
+//     method: 'POST',
+//     body: JSON.stringify(reservation)
+//   });
+//   } catch (error) {
+//     if (error.status === 409) {
+//       alert('Dates already taken, please choose another listing or dates')
+//     }}
     
-  if (res && res.ok) {
-    const data = await res.json();
-    history.push(`/reservations/${data.reservationId}/confirmation`);
-  } 
-  return res;
-};
+//   if (res && res.ok) {
+//     const data = await res.json();
+//     history.push(`/reservations/${data.reservationId}/confirmation`);
+//   } 
+//   return res;
+// };
 
-export const updateReservation = (reservation) => async dispatch => {
-  let res;
+// export const updateReservation = (reservation) => async dispatch => {
+//   let res;
 
-  try {
-    res = await csrfFetch(`/api/reservations/${reservation.id}/`, {
-    method: 'PATCH',
-    body: JSON.stringify(reservation)
-  });
-  } catch (error) {
-    if (error.status === 409) {
-      alert ('Dates already taken, please choose another listing or dates')
-    }}
+//   try {
+//     res = await csrfFetch(`/api/reservations/${reservation.id}/`, {
+//     method: 'PATCH',
+//     body: JSON.stringify(reservation)
+//   });
+//   } catch (error) {
+//     if (error.status === 409) {
+//       alert ('Dates already taken, please choose another listing or dates')
+//     }}
 
-  if (res && res.ok) {
-    dispatch(fetchReservations());
-    dispatch(closeModalHandler());
-  }
-  return res;
-};
+//   if (res && res.ok) {
+//     dispatch(fetchReservations());
+//     dispatch(closeModalHandler());
+//   }
+//   return res;
+// };
 
-export const deleteReservation = (reservationId) => async dispatch => {
-  const res = await csrfFetch(`/api/reservations/${reservationId}`, {
-    method: 'DELETE'
-  });
-  if (res.ok) {
-    dispatch(fetchReservations());
-    dispatch(closeModalHandler());
-  }
-  return res;
-};
+// export const deleteReservation = (reservationId) => async dispatch => {
+//   const res = await csrfFetch(`/api/reservations/${reservationId}`, {
+//     method: 'DELETE'
+//   });
+//   if (res.ok) {
+//     dispatch(fetchReservations());
+//     dispatch(closeModalHandler());
+//   }
+//   return res;
+// };
 
 
 const listingsReducer = (state = {}, action) => {

@@ -9,15 +9,13 @@ const ConfirmationPage = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const reservationId = parseInt(params["reservationId"])
-  const reservation = useSelector(getReservation(reservationId))
-
+  const reservations = useSelector(state => state.reservations.currentReservations)
+  const reservation = reservations[reservationId]
+  
   useEffect(() => {
     dispatch(fetchReservation(reservationId))
   }, [dispatch, reservationId])
 
-  console.log("begin")
-  console.log(reservation)
-  console.log("end")
 
   if (!reservation) {
     return (

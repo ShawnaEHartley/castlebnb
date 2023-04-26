@@ -47,9 +47,7 @@ const ReservationIndexItem = ({reservation}) => {
 
   return (
     <div className='reservation-item-wrapper'>
-    {/* { modalState.on ? <div className='modal-background' onClick={()=>{dispatch(closeModalHandler())}}></div> : "" } */}
     { modalState.on ? <div className='modal-wrapper'>{ modalComponent() }</div> : "" }
-    {/* <a href={`/listings/${reservation.listingId}`}> */}
       <div className='reservation-item-left'>
         <img className='reservation-item-pic' src={reservation.listing.image} alt={reservation.listing.title} />
       </div>
@@ -57,8 +55,7 @@ const ReservationIndexItem = ({reservation}) => {
         <div className='reservation-item-title'>{reservation.listing.title}</div>
         <div className='reservation-item-text'>Hosted by {reservation.listing.owner.name}</div>
           <div className='reservation-item-text'>{formattedStart} - {formattedEnd}</div>
-          {/* <div>Total Cost = {duration} days * {reservation.listing.pricePerNight} + Service and Cleaning Fees = {totalCost} </div> */}
-          <div className='reservation-item-text'>Total Cost = {totalCost}</div>
+          <div className='reservation-item-text'>Total Cost = ${totalCost}</div>
       </div>
       <div className='reservation-item-right'>
         <button onClick={updateHandler}>update</button>

@@ -1,5 +1,3 @@
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faChessRook, faSearch, faArrowAltCircleUp, faCaretSquareDown, faExclamationTriangle } from '@fortawesome/fontawesome-free-solid'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -34,8 +32,6 @@ function NavBar() {
 
   const currentUser = useSelector(state => state.session.user)
 
-  console.log(currentUser)
-
   const dispatch = useDispatch();
 
   const toggleProfileHandler = () => {
@@ -52,7 +48,8 @@ function NavBar() {
 
   const logOutHandler = (e) => {
     e.preventDefault();
-    return dispatch(sessionActions.logout())
+    dispatch(sessionActions.logout());
+    history.push('/');
   };
 
   const modalComponent = () => {
@@ -91,12 +88,11 @@ function NavBar() {
           <MenuItem href='http://shawna.dev' target='_blank'>Personal Site</MenuItem>
           <MenuItem href='http://gh.io/shawna' target='_blank'>GitHub</MenuItem>
           <MenuItem href='https://www.linkedin.com/in/shawna-e-hartley/' target='_blank'>LinkedIn</MenuItem>
-          <MenuItem href='https://angel.co/u/shawna-hartley' target='_blank'>AngelList</MenuItem>
+          <MenuItem href='https://wellfound.com/u/shawna-hartley' target='_blank'>Wellfound</MenuItem>
         </Menu>
           <div className='profile-nav-icon' onClick={toggleProfileHandler}>
             <img id='menu-icon' src={menu} alt="" />
             {!currentUser ? <img id='profile-icon' src={profile} alt="" /> : <img id='profile-icon' src={shawna} alt="" />}
-            {/* <button id='profile-button' onClick={toggleProfileHandler}>Profile</button> */}
           { profileToggle ? <Navigation onSignUp={signUpModalHandler} onLogIn={logInModalHandler} onLogOut={logOutHandler} /> : "" }
           </div>
       </div>

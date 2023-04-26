@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteReservation } from "../../store/listings";
+import { deleteReservation, fetchReservations } from "../../store/reservations";
 import { closeModalHandler } from "../../store/modal";
 import './ReservationForm.css'
 

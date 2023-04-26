@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchListing, getListing, updateReservation } from '../../store/listings';
+import { fetchListing, getListing } from '../../store/listings';
+import { updateReservation } from '../../store/reservations';
 
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
