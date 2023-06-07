@@ -38,12 +38,16 @@ class Reservation < ApplicationRecord
     booked_end_date = self.end_date
 
     # if req start date is before start date and req end date is after start date, return false
-    if req_start_date <= booked_start_date && req_end_date > booked_start_date
+    # if req_start_date <= booked_start_date && req_end_date > booked_start_date
+      # refactor using .cover? method
+    if (req_start_date..req_end_date).cover?(booked_start_date)
       return false
     end
 
     # if req start date is between the start date and end date (>= start date and < end date)
-    if req_start_date >= booked_start_date && req_start_date < booked_end_date
+    # if req_start_date >= booked_start_date && req_start_date < booked_end_date
+      # refactor using .cover? method
+    if (booked_start_date..booked_end_date).cover?(req_start_date)
       return false
     end
 

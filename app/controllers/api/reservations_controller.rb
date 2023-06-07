@@ -34,12 +34,6 @@ class Api::ReservationsController < ApplicationController
   def create 
     @reservation = Reservation.new(reservation_params)
 
-    puts 'Hello'
-    puts reservation_params
-    puts "2"
-    puts @reservation
-    puts 'ennnnnd'
-
     if @reservation.can_reserve?
       if @reservation.save
         render 'api/reservations/confirmation'
@@ -64,7 +58,17 @@ class Api::ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
 
     if @reservation.reserver_id === current_user.id
-      @reservation.update(reservation_params)
+      if @reservation.can_reserve?
+        if @reservation.update(reservation_params)
+          render 'api/reservations/confirmation'
+        else
+          render json: { errors: @reservation.errors.full_messages }, status: 404
+        end
+      else
+        render json: { errors: 'booking overlap' }, status: 409
+      end
+    else 
+      render json: { errors: 'unauthorized' }, status:401
     end
   end
 
