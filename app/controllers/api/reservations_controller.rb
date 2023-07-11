@@ -67,8 +67,6 @@ class Api::ReservationsController < ApplicationController
       else
         render json: { errors: 'booking overlap' }, status: 409
       end
-    else 
-      render json: { errors: 'unauthorized' }, status:401
     end
   end
 
