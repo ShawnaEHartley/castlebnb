@@ -64,16 +64,16 @@ const ReservationForm = ({listing}) => {
 
 
 
-  const datesArr = [];
-  listing.listingReservations.forEach(reservation => {
-    const start = dayjs(reservation.startDate);
-    const end = dayjs(reservation.endDate);
-    let current = start;
-    while (current.isBefore(end) || current.isSame(end, 'day')) {
-      datesArr.push(current.format('YYYY-MM-DD'));
-      current = current.add(1, 'day');
-    }
-  });
+  // const datesArr = [];
+  // listing.listingReservations.forEach(reservation => {
+  //   const start = dayjs(reservation.startDate);
+  //   const end = dayjs(reservation.endDate);
+  //   let current = start;
+  //   while (current.isBefore(end) || current.isSame(end, 'day')) {
+  //     datesArr.push(current.format('YYYY-MM-DD'));
+  //     current = current.add(1, 'day');
+  //   }
+  // });
 
 
   return (
@@ -89,7 +89,7 @@ const ReservationForm = ({listing}) => {
         </div>
         <div className='reservation-review-pane'>
           <img src={star} alt="star" className='icon subtitle-left-item' id='show-icon-star' />
-          <div className='icon-text subtitle-left-item' id='show-icon-rating-text'>new</div>
+          <div className='icon-text subtitle-left-item' id='show-icon-rating-text'>{ listing.listingReviews.length ? '4.76' : 'new' }</div>
           <span className='subtitle-left-item'>·</span>
           {/* { listing.listingReviews ? <a href='#show-page-review-wrapper' className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</a> : <div>0</div>} */}
           <a href='#show-page-review-wrapper' className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</a>
@@ -104,7 +104,11 @@ const ReservationForm = ({listing}) => {
             className='reservation-button' id='res-checkin-button'
             value={startDate}
             minDate={today}
-            isDisabled={(date) => { datesArr.includes(date.toISOString().split('T')[0])}}
+            shouldDisableDate={date =>
+              listing.listingReservations.some(reservation =>
+                dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
+              )
+            }
             onChange={date => {
               setStartDate(date);
               if (date.isAfter(endDate)) {
@@ -117,6 +121,11 @@ const ReservationForm = ({listing}) => {
             value={endDate}
             onChange={date => setEndDate(date)}
             minDate={startDate}
+            shouldDisableDate={date =>
+              listing.listingReservations.some(reservation =>
+                dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
+              )
+            }
             />
           </div>
           <div className='reservation-guests'>
