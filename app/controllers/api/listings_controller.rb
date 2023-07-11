@@ -49,6 +49,15 @@ class Api::ListingsController < ApplicationController
     @average_value = total / (reviews.length)
   end
 
+  def calculate_overall_average(reviews)
+    categories = [:cleanliness, :communication, :checkin, :accuracy, :location, :value]
+    category_averages = categories.map do |category|
+      send("average_#{category}", reviews)
+    end
+    overall_average = category_averages.sum / category_averages.length
+    @overall_average = overall_average.round(2)
+  end
+
   def index
     @listings = Listing.all
     render 'api/listings/index'
@@ -77,6 +86,7 @@ class Api::ListingsController < ApplicationController
     average_accuracy(reviews)
     average_location(reviews)
     average_value(reviews)
+    calculate_overall_average(reviews)
 
     if @listing 
       render 'api/listings/show'

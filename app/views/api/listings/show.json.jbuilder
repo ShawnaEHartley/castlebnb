@@ -26,6 +26,7 @@ json.reviewAverage do
   json.accuracyRating @average_accuracy
   json.locationRating @average_location
   json.valueRating @average_value
+  json.overallRating @overall_average
 end
 
 json.listingReservations @listing.reservations do |reservation|
