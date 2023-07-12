@@ -69,8 +69,6 @@ const ListingShow = () => {
     dispatch({type: 'modalOn', component: 'showReviewForm'})
   };
 
-  console.log(listing.reviewAverage.overallRating);
-
   return (
     <>
     { modalState.on ? <div className='modal-background' onClick={()=>{dispatch(closeModalHandler())}}></div> : "" }

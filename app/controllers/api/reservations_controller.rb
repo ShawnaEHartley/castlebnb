@@ -34,16 +34,16 @@ class Api::ReservationsController < ApplicationController
   def create 
     @reservation = Reservation.new(reservation_params)
 
-    if @reservation.can_reserve?
+    # if @reservation.can_reserve?
       if @reservation.save
         render 'api/reservations/confirmation'
       else
         render json: { errors: @reservation.errors.full_message }, status: 404
       end
-    else 
-      render json: { errors: 'booking overlap'}, status: 409
-      return
-    end
+    # else 
+    #   render json: { errors: 'booking overlap'}, status: 409
+    #   return
+    # end
   end
 
   def destroy
@@ -58,15 +58,15 @@ class Api::ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
 
     if @reservation.reserver_id === current_user.id
-      if @reservation.can_reserve?
+      # if @reservation.can_reserve?
         if @reservation.update(reservation_params)
           render 'api/reservations/confirmation'
         else
           render json: { errors: @reservation.errors.full_messages }, status: 404
         end
-      else
-        render json: { errors: 'booking overlap' }, status: 409
-      end
+      # else
+      #   render json: { errors: 'booking overlap' }, status: 409
+      # end
     end
   end
 
