@@ -19,6 +19,8 @@ const ReservationForm = ({listing}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
+
+  const userReservations = useSelector(state => state.reservations.currentReservations);
   
   let today = dayjs();
   const [startDate, setStartDate] = useState(today);
@@ -108,7 +110,11 @@ const ReservationForm = ({listing}) => {
               listing.listingReservations.some(reservation =>
                 dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
               )
+              || userReservations.some(reservation => 
+                dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
+              )
             }
+            
             onChange={date => {
               setStartDate(date);
               if (date.isAfter(endDate)) {
