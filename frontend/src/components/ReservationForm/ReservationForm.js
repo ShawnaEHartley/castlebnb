@@ -19,6 +19,8 @@ const ReservationForm = ({listing}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
+
+  const userReservations = useSelector(state => state.reservations.currentReservations);
   
   let today = dayjs();
   const [startDate, setStartDate] = useState(today);
@@ -89,7 +91,7 @@ const ReservationForm = ({listing}) => {
         </div>
         <div className='reservation-review-pane'>
           <img src={star} alt="star" className='icon subtitle-left-item' id='show-icon-star' />
-          <div className='icon-text subtitle-left-item' id='show-icon-rating-text'>{ listing.listingReviews.length ? '4.76' : 'new' }</div>
+          <div className='icon-text subtitle-left-item' id='show-icon-rating-text'>{ listing.listingReviews.length ? listing.reviewAverage.overallRating : 'new' }</div>
           <span className='subtitle-left-item'>·</span>
           {/* { listing.listingReviews ? <a href='#show-page-review-wrapper' className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</a> : <div>0</div>} */}
           <a href='#show-page-review-wrapper' className='icon-text subtitle-left-item' id='show-icon-review-text'>{listing.listingReviews.length} reviews</a>
@@ -108,7 +110,11 @@ const ReservationForm = ({listing}) => {
               listing.listingReservations.some(reservation =>
                 dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
               )
+              || userReservations.some(reservation => 
+                dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
+              )
             }
+            
             onChange={date => {
               setStartDate(date);
               if (date.isAfter(endDate)) {

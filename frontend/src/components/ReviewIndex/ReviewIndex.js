@@ -8,7 +8,7 @@ const ReviewIndex = ({listing}) => {
     <div className='review-index-wrapper'>
 
       <div className='review-index-star-wrapper'>
-        <div className='review-index-star'>
+        <div className='review-index-star' title={listing.reviewAverage.cleanlinessRating.toFixed(2)}>
           <div>Cleanliness</div>
           <div>
             <StarRatingComponent
@@ -19,7 +19,7 @@ const ReviewIndex = ({listing}) => {
             />
           </div>
         </div>
-        <div className='review-index-star'>
+        <div className='review-index-star' title={listing.reviewAverage.communicationRating.toFixed(2)}>
           <div>Communication</div>
           <div>
             <StarRatingComponent
@@ -30,7 +30,7 @@ const ReviewIndex = ({listing}) => {
             />
           </div>
         </div>
-        <div className='review-index-star'>
+        <div className='review-index-star' title={listing.reviewAverage.checkinRating.toFixed(2)}>
           <div>Check in</div>
           <div>
             <StarRatingComponent
@@ -41,7 +41,7 @@ const ReviewIndex = ({listing}) => {
             />
           </div>
         </div>
-        <div className='review-index-star'>
+        <div className='review-index-star' title={listing.reviewAverage.accuracyRating.toFixed(2)}>
           <div>Accuracy</div>
           <div>
             <StarRatingComponent
@@ -52,7 +52,7 @@ const ReviewIndex = ({listing}) => {
             />
           </div>
         </div>
-        <div className='review-index-star'>
+        <div className='review-index-star' title={listing.reviewAverage.locationRating.toFixed(2)}>
           <div>Location</div>
           <div>
             <StarRatingComponent
@@ -63,7 +63,7 @@ const ReviewIndex = ({listing}) => {
             />
           </div>
         </div>
-        <div className='review-index-star'>
+        <div className='review-index-star' title={listing.reviewAverage.valueRating.toFixed(2)}>
           <div>Value</div>
           <div>
             <StarRatingComponent
