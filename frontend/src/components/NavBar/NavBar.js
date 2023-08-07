@@ -85,8 +85,8 @@ function NavBar() {
               <img src={globe} alt="globe" />
             </span>
           </MenuButton> }>
-          <MenuItem href='http://shawna.dev' target='_blank'>Personal Site</MenuItem>
-          <MenuItem href='http://gh.io/shawna' target='_blank'>GitHub</MenuItem>
+          <MenuItem href='https://www.shawna.dev' target='_blank'>Personal Site</MenuItem>
+          <MenuItem href='https://gh.io/shawna' target='_blank'>GitHub</MenuItem>
           <MenuItem href='https://www.linkedin.com/in/shawna-e-hartley/' target='_blank'>LinkedIn</MenuItem>
           <MenuItem href='https://wellfound.com/u/shawna-hartley' target='_blank'>Wellfound</MenuItem>
         </Menu>
