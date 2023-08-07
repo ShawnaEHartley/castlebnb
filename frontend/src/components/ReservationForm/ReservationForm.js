@@ -106,14 +106,14 @@ const ReservationForm = ({listing}) => {
             className='reservation-button' id='res-checkin-button'
             value={startDate}
             minDate={today}
-            shouldDisableDate={date =>
-              listing.listingReservations.some(reservation =>
-                dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
-              )
-              || userReservations.some(reservation => 
-                dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
-              )
-            }
+            // shouldDisableDate={date =>
+            //   listing.listingReservations.some(reservation =>
+            //     dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
+            //   )
+            //   || userReservations.some(reservation => 
+            //     dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
+            //   )
+            // }
             
             onChange={date => {
               setStartDate(date);
@@ -127,11 +127,11 @@ const ReservationForm = ({listing}) => {
             value={endDate}
             onChange={date => setEndDate(date)}
             minDate={startDate}
-            shouldDisableDate={date =>
-              listing.listingReservations.some(reservation =>
-                dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
-              )
-            }
+            // shouldDisableDate={date =>
+            //   listing.listingReservations.some(reservation =>
+            //     dayjs(date).isBetween(reservation.startDate, reservation.endDate, null, '[]')
+            //   )
+            // }
             />
           </div>
           <div className='reservation-guests'>
