@@ -8,6 +8,13 @@ const ListingIndexItem = ({listing}) => {
     e.preventDefault();
     history.push(`/listings/${listing.id}`);
   }
+
+  // create an array of all photoUrl's for each listing
+  // console.log('this is the listing')
+  // consolog(listing)
+  // console.log('this is the listing.photoUrl')
+  // console.log(listing.photoUrl) 
+  // console.log('done')
   
   return (
     <div className='index-item'>

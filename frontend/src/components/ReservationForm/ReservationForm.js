@@ -20,7 +20,7 @@ const ReservationForm = ({listing}) => {
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
 
-  const userReservations = useSelector(state => state.reservations.currentReservations);
+  // const userReservations = useSelector(state => state.reservations.currentReservations);
   
   let today = dayjs();
   const [startDate, setStartDate] = useState(today);
