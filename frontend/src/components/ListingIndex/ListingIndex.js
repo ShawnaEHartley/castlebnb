@@ -9,7 +9,6 @@ import map from '../../assets/images/icons8-map-32.png';
 import './ListingIndex.css'
 import { useHistory } from 'react-router-dom';
 
-
 const ListingIndex = () => {
   const dispatch = useDispatch();
   const listings = useSelector(getListings);
@@ -30,7 +29,7 @@ const ListingIndex = () => {
   }
 
   return (
-    <div className='index-wrapper'> 
+    <div className='index-wrapper'>
       <div className="index">
         {listings.map((listing) => {
           return (

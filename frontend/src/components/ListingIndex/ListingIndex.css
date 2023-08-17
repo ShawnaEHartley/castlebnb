@@ -22,6 +22,12 @@
   width: min-content;
 }
 
+.index-image-carousel {
+  width: 305px;
+  height: 330px;
+  overflow: hidden;
+}
+
 .index-image {
   border-radius: 10px;
   width: 305px;
