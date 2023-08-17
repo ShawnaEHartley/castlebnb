@@ -24,6 +24,8 @@
   },
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.1.35",
+    "@mui/icons-material": "^5.14.3",
+    "@mui/material": "^5.14.5",
     "express": "^4.18.2",
     "react-material-ui-carousel": "^3.4.2"
   },
