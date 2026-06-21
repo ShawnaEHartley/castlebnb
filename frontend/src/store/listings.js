@@ -88,7 +88,7 @@ export const updateReview = (review) => async dispatch => {
   dispatch(fetchListing(review.listingId));
 };
 
-const listingsReducer = (state = {}, action) => {
+const listingsReducer = (state = { index: STATIC_LISTINGS_INDEX }, action) => {
   let newState = { ...state };
   switch (action.type) {
     case RECEIVE_LISTING:

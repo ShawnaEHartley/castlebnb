@@ -16,7 +16,7 @@ const ListingIndexItem = ({listing}) => {
   return (
     <div className='index-item'>
     <div onClick={openShow}>
-      <Carousel className='index-image-carousel' autoPlay={false} indicators={true} > 
+      <Carousel className='index-image-carousel' autoPlay={false} indicators={true} animation="fade" duration={300} >
         { listing.photoUrl.map ((photo) => <Paper> <img className='index-image' src={photo} alt='Default'></img> </Paper> )}
       </Carousel>
       {/* <img className='index-image' src={listing.photoUrl} alt='Default'></img> */}
