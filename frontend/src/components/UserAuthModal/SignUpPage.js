@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
-import alert from '../../assets/images/icons8-alert-48.png'
+import { useDispatch } from "react-redux";
 import { closeModalHandler } from "../../store/modal";
 import * as sessionActions from '../../store/session';
 
@@ -9,7 +7,6 @@ import './UserAuth.css'
 
 function SignUpPage(props) {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
   const [first_name, setFirstName] =useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");

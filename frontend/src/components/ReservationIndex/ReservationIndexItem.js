@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { closeModalHandler } from '../../store/modal';
 import DeleteConfirmation from '../ReservationForm/DeleteConfirmation';
 import UpdateReservationForm from '../ReservationForm/UpdateReservationForm';
 import dayjs from 'dayjs';

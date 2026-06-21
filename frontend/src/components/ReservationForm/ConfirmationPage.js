@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { getReservation, fetchReservation } from '../../store/reservations';
+import { fetchReservation } from '../../store/reservations';
 import './ConfirmationPage.css';
 
 const ConfirmationPage = () => {

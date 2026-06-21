@@ -5,9 +5,21 @@ Westeros is the continent located in the far west of the known world in A Game o
 
 Find your next fairytale adventure here.
 
+**Live Site:** https://castlebnb.shawna.dev
 
-Live Site:
-https://castlebnb-xot7upsj5a-uc.a.run.app/
+---
+
+### A note on hosting
+
+The original version of this app was a full-stack build: a **Ruby on Rails API** backend containerized with **Docker** and deployed to **Google Cloud Run**, backed by a **PostgreSQL** database. It supported real user accounts (signup, login, session persistence), reservations that persisted across sessions, and reviews stored in the database. Images were uploaded via **ActiveStorage** to an **AWS S3** bucket.
+
+To cut ongoing infrastructure costs and maintenance overhead while keeping the project live as a portfolio piece, I rebuilt the frontend as a **static demo**. The current version:
+
+- Replaces all API calls with hardcoded seed data and `localStorage` persistence
+- Supports login (using the original Game of Thrones seed users), reservations, and reviews — all stored in the browser
+- Deploys as a purely static React app on **Vercel** with zero backend costs
+
+The full original stack (Rails + Docker + PostgreSQL + S3) is preserved in this repo if you want to run it locally.
 
 
 
