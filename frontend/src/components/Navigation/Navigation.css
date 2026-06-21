@@ -5,7 +5,7 @@
   width: 240px;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   background-color: rgb(251, 249, 249);
   padding-top: 5px;
   padding-bottom: 5px;
