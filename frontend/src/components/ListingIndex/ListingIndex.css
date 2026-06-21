@@ -62,12 +62,14 @@
   letter-spacing: .8px;
   position: sticky;
   bottom: 30px;
+  z-index: 100;
   padding: 10px 20px;
   height: 40px;
   width: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .show-map-button img {

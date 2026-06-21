@@ -1,14 +1,14 @@
 import { Wrapper } from '@googlemaps/react-wrapper';
-
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { fetchListings, getListings } from '../../store/listings';
 import NavBar from '../NavBar/NavBar';
-
 import list from '../../assets/images/icons8-bullet-list-90.png';
 import './MapPage.css';
+
+const API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
 function MyMapComponent() {
   const ref = useRef(null);
@@ -16,60 +16,65 @@ function MyMapComponent() {
   const listings = useSelector(getListings);
   const history = useHistory();
 
-  useEffect(()=>{
-    dispatch(fetchListings())
-  }, [dispatch])
+  useEffect(() => { dispatch(fetchListings()) }, [dispatch]);
 
-  const center = {lat: 0.531464e2, lng: 0.3379e0};
-  const zoom = 6
+  const center = { lat: 53.1464, lng: 0.3379 };
+  const zoom = 6;
 
-  useEffect(()=> {
-    const myMap = new window.google.maps.Map(ref.current, {
-      center,
-      zoom,
-    });
-    
-    for (let i = 0; i < listings.length; i++) {
-      const listing = listings[i];
-      
-      const lat = parseInt(listing["latitude"]);
-      const long = parseInt(listing["longitude"]);
-      const center = {lat: lat, lng: long};
-
-      const title = listing["title"]
-      
+  useEffect(() => {
+    if (!window.google || !ref.current) return;
+    const myMap = new window.google.maps.Map(ref.current, { center, zoom });
+    listings.forEach(listing => {
+      const pos = { lat: parseInt(listing.latitude), lng: parseInt(listing.longitude) };
       const marker = new window.google.maps.Marker({
-        position: center,
-        map: myMap,
-        title: title,
-        optimized: false
-      }, [center, zoom, title]);
-      marker.addListener("click", () => {
-        history.push(`/listings/${listing.id}`)
-      })
-    }
-  })
+        position: pos, map: myMap, title: listing.title, optimized: false,
+      });
+      marker.addListener('click', () => history.push(`/listings/${listing.id}`));
+    });
+  });
+
   return <div ref={ref} id='mappage' />;
-};
+}
 
-const MapWrapper = (props) => {
+const NoMapFallback = ({ listings, onBack }) => (
+  <div id='mappage' style={{
+    display: 'flex', flexDirection: 'column', alignItems: 'center',
+    justifyContent: 'center', gap: 12, background: '#f0ede8',
+    color: '#4F5B61', fontFamily: 'monospace', fontSize: '0.85rem',
+  }}>
+    <div>Map unavailable — no API key configured.</div>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', maxWidth: 480 }}>
+      {listings.map(l => (
+        <button key={l.id} onClick={() => onBack(l.id)} style={{
+          background: '#1B2327', color: '#F6F7F7', border: 'none',
+          borderRadius: 6, padding: '6px 12px', cursor: 'pointer', fontSize: '0.8rem',
+        }}>{l.title}</button>
+      ))}
+    </div>
+  </div>
+);
+
+const MapPage = () => {
   const history = useHistory();
-
-  const openList = () => {
-    history.push('/')
-  }
+  const listings = useSelector(getListings);
 
   return (
-  <>
-    <NavBar />
-    <div className='map-page-wrapper'>
-      <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} >
-        <MyMapComponent { ...props } />
-      </Wrapper>
-      <button className='show-map-button' onClick={openList}> Show List <img src={list} alt='list'></img></button>
-    </div>
-  </>
-  )
+    <>
+      <NavBar />
+      <div className='map-page-wrapper'>
+        {API_KEY ? (
+          <Wrapper apiKey={API_KEY}>
+            <MyMapComponent />
+          </Wrapper>
+        ) : (
+          <NoMapFallback listings={listings} onBack={(id) => history.push(`/listings/${id}`)} />
+        )}
+        <button className='show-map-button' onClick={() => history.push('/')}>
+          Show List <img src={list} alt='list' />
+        </button>
+      </div>
+    </>
+  );
 };
 
-export default MapWrapper;
+export default MapPage;
