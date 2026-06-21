@@ -73,7 +73,6 @@ const REVIEWS = {
     review(26, 5,  5, 5,4,4,5,5,3, "I loved staying in this room in Casterly Rock. The room was impeccably clean, and the accuracy of the listing was very high. The location within the castle was breathtaking, and the host was very friendly and easy to communicate with. However, the value for the price was a bit lower than expected."),
     review(27, 5,  9, 4,5,5,4,5,4, "This room in Casterly Rock was everything I hoped it would be and more. The room was very clean and accurately represented in the listing, and the host was incredibly communicative and helpful. The location within the castle was truly magical, and the value for the price was very good."),
   ],
-  6: [], 7: [], 8: [],
 };
 
 const reviewAverage = (listingId) => {
@@ -175,51 +174,6 @@ const BASE_LISTINGS = {
       `${S3}/casterlyrock1.webp`, `${S3}/casterlyrock2.avif`,
       `${S3}/casterlyrock3.gif`, `${S3}/casterlyrock4.webp`,
       `${S3}/casterlyrock5.jpeg`,
-    ],
-  },
-  6: {
-    id: 6, lister_id: 5, listerName: 'Olenna Tyrell',
-    title: 'Highgarden', subtitle: 'Built in 760 AC',
-    description: `Welcome to your luxurious apartment in the heart of Highgarden, the idyllic and peaceful capital of the Reach. This beautifully designed and tastefully furnished two-bedroom apartment is the perfect home base for your stay in one of Westeros' most beautiful and historic locations. The apartment features two spacious and beautifully appointed bedrooms, each with a comfortable queen-sized bed, soft linens, and plenty of closet space. The living room is cozy and inviting, with comfortable seating, a flat-screen TV, and large windows that let in plenty of natural light. The kitchen is fully equipped with everything you need to prepare meals and snacks during your stay, including a stove, oven, microwave, and refrigerator. The apartment also features a dining area with a table that seats four, and a beautifully appointed bathroom with a shower, complimentary toiletries, and plenty of towels. Additionally, the apartment has air conditioning, heating, and free Wi-Fi throughout. As a guest in this apartment, you'll have access to all of the amenities of Highgarden, including its stunning gardens, museums, shops, and restaurants. The apartment's host is available to help you plan your itinerary and make the most of your stay in this enchanting city. Whether you're here to explore the history and culture of Highgarden, or simply to relax and unwind in luxurious surroundings, this two-bedroom apartment is the perfect choice for your stay. Book now to experience the ultimate in comfort and convenience in one of Westeros' most magical locations.`,
-    city: 'Highgarden', state: 'The Reach', country: 'Westeros', region: 'The Reach',
-    latitude: 50.3284, longitude: -4.6453,
-    price: 300, max_guests: null, bedrooms: null, beds: null, baths: null,
-    kitchen: null, parking: null, heating: null, fireplace: null, patio: null,
-    wifi: null, self_checkin: null, pets: null, rules: null, cancellation: null,
-    photoUrl: [
-      `${S3}/highgarden_ext.jpeg`, `${S3}/highgarden_int.jpeg`,
-      `${S3}/highgarden_int_2.jpeg`, `${S3}/highgarden_int_3.webp`,
-      `${S3}/highgarden_balcony.jpeg`,
-    ],
-  },
-  7: {
-    id: 7, lister_id: 3, listerName: 'Daenerys Targaryen',
-    title: 'Dothraki Hut', subtitle: 'Home of the nomadic warriors of the grasslands',
-    description: `Experience the unique and rugged lifestyle of the Dothraki people in this authentic and cozy hut. Nestled in the heart of the vast Dothraki Sea, this traditional hut offers a one-of-a-kind experience for those seeking adventure and cultural immersion. The hut is made of natural materials, with a sturdy wooden frame and walls made of woven grasses and animal hides. Inside, you'll find a simple and comfortable space, with a plush bed draped in colorful fabrics and plenty of cushions for lounging. The hut also features a small table and chairs for dining or playing games, as well as a small fireplace for warmth and ambiance. As a guest in this hut, you'll have the opportunity to learn about the traditions and customs of the Dothraki people, from their horsemanship skills to their unique approach to food and drink. You can take part in a traditional meal, prepared over an open fire, and learn about the herbs and spices used in Dothraki cooking. The hut is located in a prime location for exploring the vast and awe-inspiring Dothraki Sea, and your hosts can help you plan excursions and activities to make the most of your stay. Whether you're interested in horseback riding, archery, or simply soaking up the breathtaking scenery, there's something for everyone in this unique and unforgettable setting. Book now to experience the raw and untamed beauty of the Dothraki Sea in the comfort of an authentic and inviting hut.`,
-    city: 'Vaes Dothrak', state: 'Dothraki Sea', country: 'Essos', region: 'Essos',
-    latitude: 50.0798, longitude: 14.4292,
-    price: null, max_guests: null, bedrooms: null, beds: null, baths: null,
-    kitchen: null, parking: null, heating: null, fireplace: null, patio: null,
-    wifi: null, self_checkin: null, pets: null, rules: null, cancellation: null,
-    photoUrl: [
-      `${S3}/dothraki1.png`, `${S3}/dolthraki2.webp`,
-      `${S3}/dothraki3.jpeg`, `${S3}/dothraki4.webp`,
-      `${S3}/dothraki5.jpeg`,
-    ],
-  },
-  8: {
-    id: 8, lister_id: 11, listerName: 'Lyanna Mormont',
-    title: 'North of the Wall', subtitle: 'Experience the Wildlands',
-    description: `Welcome to your wild and rugged camping experience north of the Wall, where you'll have the opportunity to immerse yourself in the untamed beauty of the far north. The campsite is located in a remote and pristine wilderness area, with sweeping views of snow-capped mountains, frozen lakes, and expansive forests.\n\nYour camping experience will be both thrilling and comfortable, with a spacious and well-equipped tent that includes a cozy bed, warm blankets, and ample space for your gear. The campsite also features a communal fire pit, where you can gather with other guests to swap stories, cook meals, and enjoy the warmth of a roaring fire under the starry northern skies.\n\nAs a guest in this campsite, you'll have access to a wide range of outdoor activities, from hiking and snowshoeing to ice fishing and wildlife watching. You can also opt for a guided excursion with a knowledgeable and experienced local guide, who can lead you on a journey of discovery through the stunning and rugged terrain.\n\nThe campsite is fully equipped with all the amenities you need for a comfortable and enjoyable stay, including a well-stocked kitchen area with a stove, refrigerator, and all the cookware and utensils you need to prepare meals. The campsite also features hot showers, clean and modern bathroom facilities, and free Wi-Fi.\n\nWhether you're here to test your wilderness skills, to connect with the natural world, or simply to escape the stresses of modern life, this camping experience north of the Wall is the perfect choice for your next adventure. Book now to experience the thrill of the far north in comfort and style.`,
-    city: 'Hardhome', state: 'North of the Wall', country: 'North of the Wall', region: 'North of the Wall',
-    latitude: 57.4785, longitude: -4.2265,
-    price: 40, max_guests: null, bedrooms: null, beds: null, baths: null,
-    kitchen: null, parking: null, heating: null, fireplace: null, patio: null,
-    wifi: null, self_checkin: null, pets: null, rules: null, cancellation: null,
-    photoUrl: [
-      `${S3}/north3.webp`, `${S3}/north1.webp`,
-      `${S3}/north2.webp`, `${S3}/north4.webp`,
-      `${S3}/north5.jpeg`,
     ],
   },
 };
