@@ -1,3 +1,5 @@
 {
+  "buildCommand": "react-scripts build",
+  "outputDirectory": "build",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
