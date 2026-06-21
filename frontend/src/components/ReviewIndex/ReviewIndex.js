@@ -4,6 +4,14 @@ import './ReviewIndex.css';
 
 
 const ReviewIndex = ({listing}) => {
+  if (!listing.reviewAverage) {
+    return (
+      <div className='review-index-wrapper'>
+        <div style={{ color: '#888', fontStyle: 'italic', padding: '20px 0' }}>No reviews yet.</div>
+      </div>
+    );
+  }
+
   return (
     <div className='review-index-wrapper'>
 

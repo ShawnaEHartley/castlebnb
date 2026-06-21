@@ -30,9 +30,10 @@ const ReservationForm = ({listing}) => {
   const duration = endDate.diff(startDate, 'd', false);
 
   const [numGuests, setNumGuests] = useState(0)
+  const guestLimit = listing.maxGuests || 6;
   let values = [];
-  for (let i = 1; i <= listing.maxGuests; i++) {
-    const ele = {value: i.toString(), label: i.toString()}  
+  for (let i = 1; i <= guestLimit; i++) {
+    const ele = {value: i.toString(), label: i.toString()}
     values.push(ele);
   };
 
