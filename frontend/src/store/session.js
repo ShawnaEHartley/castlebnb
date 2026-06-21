@@ -1,85 +1,59 @@
-import csrfFetch from './csrf';
 import { closeModalHandler } from './modal';
+import { STATIC_USERS } from './staticData';
 
-const SET_CURRENT_USER = 'session/setCurrentUser';
+const SET_CURRENT_USER    = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 
-const setCurrentUser = (user) => {
-  return ({
-    type: SET_CURRENT_USER,
-    payload: user
-  });
+const setCurrentUser    = user => ({ type: SET_CURRENT_USER, payload: user });
+const removeCurrentUser = ()   => ({ type: REMOVE_CURRENT_USER });
+
+const safeUser = ({ password: _, ...u }) => u;
+
+const fakeError = (msg) => {
+  const err = { errors: [msg] };
+  return { clone: () => ({ json: async () => err }), json: async () => err };
 };
 
-const removeCurrentUser = () => {
-  return ({
-    type: REMOVE_CURRENT_USER
-  });
-};
-
-const storeCSRFToken = (res) => {
-  const csrfToken = res.headers.get('X-CSRF-Token');
-  if (csrfToken) sessionStorage.setItem('X-CSRF-Token', csrfToken);
-};
-
-const storeCurrentUser = (user) => {
-  if (user) {sessionStorage.setItem('currentUser', JSON.stringify(user)) }
-  else { sessionStorage.removeItem('currentUser') };
-};
-
-export const login = (user) => async(dispatch) => {
-  const { full_name, email, password } = user;
-  const res = await csrfFetch('/api/session', {
-    method: 'POST', 
-    body: JSON.stringify({ full_name, email, password })
-  });
-  const data = await res.json();
-  dispatch(setCurrentUser(data.user));
+export const login = ({ email, password }) => async (dispatch) => {
+  const found = STATIC_USERS.find(u => u.email === email && u.password === password);
+  if (!found) throw fakeError('Invalid email or password.');
+  const user = safeUser(found);
+  sessionStorage.setItem('currentUser', JSON.stringify(user));
+  dispatch(setCurrentUser(user));
   dispatch(closeModalHandler());
-  return res;
 };
 
-export const restoreSession = () => async(dispatch) => {
-  const res = await csrfFetch('/api/session');
-  storeCSRFToken(res);
-  const data = await res.json();
-  storeCurrentUser(data.user);
-  dispatch(setCurrentUser(data.user));
-  return res
+export const restoreSession = () => async (dispatch) => {
+  const stored = sessionStorage.getItem('currentUser');
+  const user = stored ? JSON.parse(stored) : null;
+  dispatch(setCurrentUser(user));
 };
 
-export const signup = (user) => async(dispatch) => {
-  const { full_name, email, password } = user;
-  const res = await csrfFetch('/api/users', {
-    method: 'POST',
-    body: JSON.stringify({ full_name, email, password })
-  });
-  const data = await res.json();
-  storeCurrentUser(data.user);
-  dispatch(setCurrentUser(data.user));
+let _nextUserId = STATIC_USERS.length + 1;
+
+export const signup = ({ full_name, email, password }) => async (dispatch) => {
+  if (STATIC_USERS.find(u => u.email === email)) throw fakeError('Email already taken.');
+  const user = { id: _nextUserId++, full_name, email };
+  STATIC_USERS.push({ ...user, password });
+  sessionStorage.setItem('currentUser', JSON.stringify(user));
+  dispatch(setCurrentUser(user));
   dispatch(closeModalHandler());
-  return res
-}
+};
 
-export const logout = () => async(dispatch) => {
-  const res = await csrfFetch('/api/session', { method: 'DELETE' });
-  storeCurrentUser(null);
+export const logout = () => async (dispatch) => {
+  sessionStorage.removeItem('currentUser');
   dispatch(removeCurrentUser());
-  return res;
-}
+};
 
 const initialState = {
-  user: JSON.parse(sessionStorage.getItem('currentUser'))
-  };
+  user: JSON.parse(sessionStorage.getItem('currentUser')),
+};
 
-const sessionReducer = ( state = initialState, action ) => {
+const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_CURRENT_USER:
-      return {...state, user: action.payload};
-    case REMOVE_CURRENT_USER:
-      return {...state, user: null};
-    default:
-      return state;
+    case SET_CURRENT_USER:    return { ...state, user: action.payload };
+    case REMOVE_CURRENT_USER: return { ...state, user: null };
+    default: return state;
   }
 };
 
